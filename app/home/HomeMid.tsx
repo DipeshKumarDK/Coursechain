@@ -13,7 +13,7 @@ export default function HomeMid() {
         </h3>
         <div className="flex mt-5">
            <h2 className="pt-6 pb-6 pl-10 pr-10 bg-[#b1e1f5] text-slate-900 font-semibold rounded">Join For Free</h2>
-           <h2 className="pt-6 pb-6 pl-10 pr-10 border-[2px] border-[#b3e2f4] font-semibold rounded ml-2 text-[#c1e9f8]">Try MyCourse For Business</h2>
+           <h2 className="pt-6 pb-6 pl-10 pr-10 border-[2px] border-[#b3e2f4] font-semibold rounded ml-2 text-[#c1e9f8]">Try MyCourse For Teaching</h2>
         </div>
       </section>
       <section className="w-1/2 h-full flex justify-center">
