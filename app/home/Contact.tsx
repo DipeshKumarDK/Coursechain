@@ -5,11 +5,13 @@ import { AiFillTwitterCircle } from "react-icons/ai";
 
 export default function Contact() {
   return (
-    <div className="bg-[#020b0e] text-white pt-10 pb-10 pl-64 pr-64 border-b-[1px] border-slate-200">
-      <div className="flex pt-2">
-        <section className="w-1/2 pr-10">
-          <h2 className="text-3xl font-semibold">Having A Doubt?</h2>
+    <div className="bg-[#020b0e] text-white pt-10 pb-10 2xl:pl-64 2xl:pr-64 xl:pl-52 xl:pr-52 lg:pl-32 lg:pr-32 sm:pl-8 sm:pr-8 pl-4 pr-4 border-b-[1px] border-slate-200">
+      <div className="md:flex pt-2">
+        <section className="md:w-1/2 w-full pr-10">
+          <h2 className="md:text-3xl text-2xl md:text-left text-center font-semibold">Having A Doubt?</h2>
+          <div className="flex md:justify-start justify-center">
           <div className="h-[2px] w-[100px] bg-white mt-3 rounded"></div>
+          </div>
           <h4 className="mt-4 text-slate-200">
             If You Are Having Any Doubt Related to Any Course, Please Put It
             Down Here. We Will Reach To You As Soon As Possible.
@@ -43,7 +45,7 @@ export default function Contact() {
             </h3>
           </div>
         </section>
-        <section className="w-1/2 pl-2">
+        <section className="md:w-1/2 md:mt-0 mt-6 w-full md:pl-2">
           <input
             className="bg-[#020b0e] border-[1px] border-slate-300 text-slate-200 placeholder:text-slate-400 p-2 rounded w-full h-[45px]"
             placeholder="Your name"

@@ -26,3 +26,11 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
+
+
+// git add .
+// git commit -m "Final Changes"
+// git remote add origin url(in url add the address of your repository)
+// git remote -v
+// git push -f
+// git push origin master
