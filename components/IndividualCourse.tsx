@@ -3,11 +3,11 @@ import pic from "../assets/purple.jpg";
 
 export default function IndividualCourse() {
   return (
-    <div className="border-[1px] border-slate-200 p-6 flex">
-      <Image src={pic} alt="/" className="w-2/6 h-64" />
-      <section className="w-3/6 pl-6 pr-6 flex flex-col justify-between">
+    <div className="border-[1px] border-slate-200 md:p-6 p-2 flex md:flex-row flex-col">
+      <Image src={pic} alt="/" className="md:w-2/6 w-full h-64" />
+      <section className="md:w-3/6 w-full md:pt-0 pt-4 lg:pl-6 md:pl-4 md:pr-4 lg:pr-6 pl-2 pr-2 flex flex-col justify-between">
         <div>
-          <h2 className="text-2xl font-semibold mr-5">
+          <h2 className="md:text-2xl sm:text-xl text-lg font-semibold lg:mr-5">
             Discovering Backend BottleNecks, Exploring The Backend
           </h2>
           <h4 className="text-slate-200 text-sm mt-2">

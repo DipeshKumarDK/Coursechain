@@ -10,6 +10,7 @@ import Top from "./Top";
 import New from "./New";
 import Contact from "./Contact";
 import Footer from "@/components/Footer";
+import TrendingQuote from "./TrendingQuote";
 
 export default function HomePage() {
   return (
@@ -20,8 +21,9 @@ export default function HomePage() {
       <Quote/>
       <Recommended/>
       <Viewing/>
-      <Explore/>
       <CategoryQuote/>
+      <Explore/>
+      <TrendingQuote/>
       <Top/>
       <New/>
       <Contact/>

@@ -1,8 +1,13 @@
 import { FaUserGraduate } from 'react-icons/fa';
+import bg from '../../assets/bg1.png'
 
 export default function Start() {
   return (
-    <div className="bg-[#09384b] text-white lg:block hidden pt-12 pb-12 xl:pl-24 xl:pr-24 lg:pl-14 lg:pr-14">
+    <div className="bg-[#04151b] text-white lg:block hidden pt-12 pb-12 xl:pl-24 xl:pr-24 lg:pl-14 lg:pr-14" style={{
+      backgroundImage: `url(${bg.src})`,
+      width: '100%',
+      height: '100%',
+    }}>
         <h2 className="md:text-3xl text-2xl font-semibold">Let's Start Learning, NF Warrior</h2>
         <div className="h-[2px] w-[100px] bg-white mt-3 rounded"></div>
 
