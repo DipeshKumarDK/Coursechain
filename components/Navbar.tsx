@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import logo from "../assets/logo2.png";
+import logo from "../assets/logo-dark.png";
 import profile from "../assets/profile.jpg";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -37,7 +37,9 @@ export default function Navbar() {
   return (
     <>
       <section className="md:flex hidden border-b-[1px] border-t-[1px] border-slate-200 pl-5 pr-5 bg-[#04151b] text-white top-0">
-        <Image src={logo} alt="Logo" className="h-14 w-14" />
+        <div className="flex flex-col justify-center">
+        <Image src={logo} alt="Logo" className="h-10 w-16" />
+        </div>
         <section className="flex flex-grow justify-between h-full w-full pl-6 pr-6">
           <div className="flex" style={{ position: "relative" }}>
             {/* <h4 className="pt-5 pb-5 text-sm font-semibold cursor-pointer text-[#c1e9f8]" onMouseEnter={()=>setVisible(1)} onMouseLeave={()=>setVisible(0)}>Categories</h4> */}
