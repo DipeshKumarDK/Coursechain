@@ -1,8 +1,14 @@
 import HomeCategory from "@/components/HomeCategory";
+import bg from '../../assets/bg1.png'
+
 
 export default function Explore () {
   return (
-    <div className="bg-[#04151b] text-white pt-8 pb-10 xl:pl-24 xl:pr-24 lg:pl-16 lg:pr-16 md:pl-12 md:pr-12 sm:pl-6 sm:pr-6 pl-3 pr-3">
+    <div className="bg-[#04151b] text-white pt-8 pb-10 xl:pl-24 xl:pr-24 lg:pl-16 lg:pr-16 md:pl-12 md:pr-12 sm:pl-6 sm:pr-6 pl-3 pr-3" style={{
+      backgroundImage: `url(${bg.src})`,
+      width: '100%',
+      height: '100%',
+    }}>
         <h2 className="md:text-3xl text-2xl font-semibold text-center">Explore The Categories</h2>
         <div className="flex justify-center">
           <div className="h-[2px] w-[100px] bg-white mt-3 rounded"></div>
