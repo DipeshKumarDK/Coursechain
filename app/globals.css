@@ -22,6 +22,10 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
+.checkbox-round {
+  clip-path: circle(46% at 50% 50%);
+}
+
 
 
 
