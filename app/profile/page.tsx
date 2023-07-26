@@ -5,9 +5,9 @@ import Footer from "@/components/Footer";
 export default function CreateProfile() {
   return (
     <div>
-       <Navbar/>
-       <CreateProfileMid/>
-       <Footer/>
+      <Navbar/>
+      <CreateProfileMid/>
+      <Footer/>
     </div>
   );
 }
