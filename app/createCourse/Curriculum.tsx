@@ -1,11 +1,11 @@
 export default function Curriculum() {
   return (
     <div className="">
-      <section className="pt-10 pb-10 pl-8 pr-8 border-b-[1px] border-slate-400">
+      <section className="md:pt-10 md:pb-10 pt-6 pb-6 md:pl-8 md:pr-8 sm:pl-5 sm:pr-5 pl-2 pr-2 border-b-[1px] border-slate-400">
         <h2 className="font-semibold text-2xl">Curriculum</h2>
       </section>
-      <section className="pt-14 pb-12 pl-8 pr-8">
-        <h3 className="text-slate-300">
+      <section className="lg:pt-14 lg:pb-12 md:pt-10 md:pb-10 sm:pt-6 sm:pb-6 pt-4 pb-4 md:pl-8 md:pr-8 sm:pl-5 sm:pr-5 pl-2 pr-2">
+        <h3 className="text-slate-300 xs:text-base text-sm">
           Start putting together your course by creating sections, lectures and
           practice. Start putting together your course by creating sections,
           lectures and practice activities. Use your course outline to structure
@@ -13,7 +13,7 @@ export default function Curriculum() {
           intending to offer your course for free, the total length of video
           content must be less than 2 hours.
         </h3>
-        <div className="pt-12 pb-4">
+        <div className="lg:pt-12 sm:pt-8 pt-6 pb-4">
             <section className="p-4 border-[1px] border-slate-300">
                <h3 className="font-semibold text-lg">Section 1</h3>
                <h4 className="mt-5 text-sm font-semibold">Section Title*</h4>

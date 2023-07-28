@@ -17,7 +17,7 @@ export default function Message() {
   };
 
   return (
-    <div className="pl-10 pr-10 pt-20 pb-20">
+    <div className="md:pl-10 md:pr-10 sm:pl-4 sm:pr-4 pl-2 pr-2 pt-20 pb-20">
       <h3 className="text-2xl font-semibold">Q&A From Your Courses</h3>
       <section>
       <div className="mt-8" style={{ position: "relative" }}>

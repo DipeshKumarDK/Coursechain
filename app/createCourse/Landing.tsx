@@ -35,10 +35,10 @@ export default function Landing() {
 
   return (
     <div className="">
-      <section className="pt-10 pb-10 pl-8 pr-8 border-b-[1px] border-slate-400">
+      <section className="md:pt-10 md:pb-10 pt-6 pb-6 md:pl-8 md:pr-8 sm:pl-5 sm:pr-5 pl-2 pr-2 border-b-[1px] border-slate-400">
         <h2 className="font-semibold text-2xl">Create Course Landing Page</h2>
       </section>
-      <section className="pt-14 pb-14 pl-8 pr-8">
+      <section className="pt-14 pb-14 md:pl-8 md:pr-8 sm:pl-5 sm:pr-5 pl-2 pr-2">
         <h3 className="text-slate-300">
           Your course landing page is crucial to your success on Udemy. If it’s
           done right, it can also help you gain visibility in search engines
@@ -46,7 +46,7 @@ export default function Landing() {
           compelling Course Landing Page that demonstrates why someone would
           want to enroll in your course.
         </h3>
-        <div className="pt-10 pb-4">
+        <div className="md:pt-10 pt-6 pb-4">
           <section className="">
             <h4 className="font-semibold">Course Title*</h4>
             <input
@@ -68,9 +68,9 @@ export default function Landing() {
             />
           </section>
         </div>
-        <section className="pt-10 pb-4">
+        <section className="md:pt-10 pt-6 pb-4">
           <h4 className="font-semibold">Basic Info</h4>
-          <div className="grid grid-cols-3 gap-[15px] mt-3">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-[15px] mt-3">
             <div className="" style={{position: 'relative'}}>
               <div className="flex border-[1px] border-slate-300 pt-1 pb-1 pl-1 pr-1 justify-between">
               <div className="flex flex-col justify-center">
@@ -84,7 +84,7 @@ export default function Landing() {
                 <IoIosArrowDropdown className="h-8 w-8 cursor-pointer" onClick={changeLanguage}/>
               </div>
               </div>
-              <div className={`w-full bg-slate-200 text-slate-800 p-3 ${language===0?'hidden':''}`} style={{position: 'absolute', top:'49px'}}>
+              <div className={`w-full bg-slate-200 text-slate-800 z-20 p-3 ${language===0?'hidden':''}`} style={{position: 'absolute', top:'49px'}}>
                 <h3 className="font-semibold hover:bg-blue-600 hover:rounded hover:text-slate-200 p-1">Hindi</h3>
                 <h3 className="font-semibold hover:bg-blue-600 hover:rounded hover:text-slate-200 p-1">English</h3>
               </div>
@@ -104,7 +104,7 @@ export default function Landing() {
                 <IoIosArrowDropdown className="h-8 w-8 cursor-pointer" onClick={changeLevel}/>
               </div>
               </div>
-              <div className={`w-full bg-slate-200 text-slate-800 p-3 ${level===0?'hidden':''}`} style={{position: 'absolute', top:'49px'}}>
+              <div className={`w-full bg-slate-200 text-slate-800 z-20 p-3 ${level===0?'hidden':''}`} style={{position: 'absolute', top:'49px'}}>
                 <h3 className="font-semibold hover:bg-blue-600 hover:rounded hover:text-slate-200 p-1">Basic</h3>
                 <h3 className="font-semibold hover:bg-blue-600 hover:rounded hover:text-slate-200 p-1">Intermediate</h3>
                 <h3 className="font-semibold hover:bg-blue-600 hover:rounded hover:text-slate-200 p-1">Advanced</h3>
@@ -124,7 +124,7 @@ export default function Landing() {
                 <IoIosArrowDropdown className="h-8 w-8 cursor-pointer" onClick={changeCategory}/>
               </div>
               </div>
-              <div className={`w-full bg-slate-200 text-slate-800 p-2 ${category===0?'hidden':''}`} style={{position: 'absolute', top:'49px'}}>
+              <div className={`w-full bg-slate-200 text-slate-800 z-20 p-2 ${category===0?'hidden':''}`} style={{position: 'absolute', top:'49px'}}>
                 <h3 className="font-semibold hover:bg-blue-600 hover:rounded hover:text-slate-200 p-1">Development</h3>
                 <h3 className="font-semibold hover:bg-blue-600 hover:rounded hover:text-slate-200 p-1">Business</h3>
                 <h3 className="font-semibold hover:bg-blue-600 hover:rounded hover:text-slate-200 p-1">Finance & Accounting</h3>
@@ -138,7 +138,7 @@ export default function Landing() {
             </div>
           </div>
         </section>
-        <section className="pt-8 pb-8">
+        <section className="md:pt-8 md:pb-8 pt-4 pb-4">
           <h4 className="font-semibold">Course Image*</h4>
           <input
             type="file"

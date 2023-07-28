@@ -18,23 +18,26 @@ export default function Courses() {
   };
 
   return (
-    <div className="pl-10 pr-10 pt-20 pb-20">
-      <h2 className="text-3xl font-semibold">Courses</h2>
-      <div className="flex mt-10 justify-between">
-      <div className="flex">
+    <div className="md:pl-10 md:pr-10 sm:pl-4 sm:pr-4 pl-2 pr-2 md:pt-20 md:pb-20 sm:pt-14 sm:pb-14 pt-8 pb-8">
+      <h2 className="sm:text-3xl text-2xl font-semibold">Courses</h2>
+      <div className="lg:hidden sm:mt-6 mt-4 w-[130px] flex flex-col bg-[#094c5b] pt-3 pb-3 rounded justify-center">
+        <h3 className="font-semibold text-center">New Course</h3>
+      </div>
+      <div className="flex lg:mt-10 md:mt-8 sm:mt-6 mt-3 justify-between">
+      <div className="flex sm:flex-row flex-col">
         <div className="flex">
           <input
-            className="border-[1px] border-slate-300 pl-2 pr-2 pt-3 pb-3 w-[250px] placeholder:text-slate-300 bg-transparent"
+            className="border-[1px] border-slate-300 pl-2 pr-2 pt-3 pb-3 sm:w-[250px] w-full placeholder:text-slate-300 bg-transparent"
             placeholder="Enter course name to seach"
           />
           <div className="flex flex-col justify-center bg-slate-200 text-slate-800 pl-3 pr-3">
-            <FiSearch className="h-8 w-8" />
+            <FiSearch className="h-8 w-8"/>
           </div>
         </div>
-        <div className="ml-6" style={{ position: "relative" }}>
+        <div className="sm:ml-6 sm:mt-0 mt-3" style={{ position: "relative" }}>
           <div
             onClick={changeFilters}
-            className="w-[180px] cursor-pointer pt-4 pb-4 pl-3 pr-3 bg-[#051b24] text-white flex justify-between border-[1px] border-slate-200"
+            className="w-[180px] cursor-pointer sm:pt-4 sm:pb-4 pt-3 pb-3 pl-3 pr-3 bg-[#051b24] text-white flex justify-between border-[1px] border-slate-200"
           >
             <h3 className="text-slate-300">Options</h3>
             <RiArrowDropDownLine className="h-6 w-6 text-white bg-[#051b24] ml-2" />
@@ -57,11 +60,11 @@ export default function Courses() {
           </div>
         </div>
         </div>
-        <div className="flex flex-col bg-[#094c5b] pl-3 pr-3 rounded justify-center">
+        <div className="lg:flex hidden flex-col bg-[#094c5b] pl-3 pr-3 rounded justify-center">
            <h3 className="font-semibold">New Course</h3>
         </div>
       </div>
-      <section className="mt-10">
+      <section className="md:mt-10 sm:mt-6 mt-4">
         <AllCourseCard/>
         <AllCourseCard/>
       </section>

@@ -1,10 +1,10 @@
 export default function Learner() {
   return (
     <div className="">
-      <section className="pt-10 pb-10 pl-8 pr-8 border-b-[1px] border-slate-400">
+      <section className="md:pt-10 md:pb-10 pt-6 pb-6 md:pl-8 pl-3 md:pr-8 pr-3 border-b-[1px] border-slate-400"> 
         <h3 className="font-semibold text-2xl">Intended Learners</h3>
       </section>
-      <div className="pt-10 pb-10 pl-8 w-5/6">
+      <div className="pt-10 pb-10 md:pl-8 lg:pr-0 md:pr-8 sm:pl-4 sm:pr-4 pl-2 pr-2 lg:w-5/6 w-full">
         <h4 className="text-slate-300 text-[0.9rem]">
           The following descriptions will be publicly visible on your Course
           Landing Page and will have a direct impact on your course performance.
@@ -21,22 +21,22 @@ export default function Learner() {
         <section className="pt-5 pb-5">
           <input
             type="text"
-            className="w-5/6 p-3 focus:outline-0 bg-[#04151b] border-[1px] border-slate-300 placeholder:text-slate-400 mt-2 mb-2"
+            className="lg:w-5/6 w-full p-3 focus:outline-0 bg-[#04151b] border-[1px] border-slate-300 placeholder:text-slate-400 mt-2 mb-2"
             placeholder="Example: Defines the roles and responsities of a project manager."
           />
           <input
             type="text"
-            className="w-5/6 p-3 focus:outline-0 bg-[#04151b] border-[1px] border-slate-300 placeholder:text-slate-400 mt-2 mb-2"
+            className="lg:w-5/6 w-full p-3 focus:outline-0 bg-[#04151b] border-[1px] border-slate-300 placeholder:text-slate-400 mt-2 mb-2"
             placeholder="Example: Defines the roles and responsities of a project manager."
           />
           <input
             type="text"
-            className="w-5/6 p-3 focus:outline-0 bg-[#04151b] border-[1px] border-slate-300 placeholder:text-slate-400 mt-2 mb-2"
+            className="lg:w-5/6 w-full p-3 focus:outline-0 bg-[#04151b] border-[1px] border-slate-300 placeholder:text-slate-400 mt-2 mb-2"
             placeholder="Example: Defines the roles and responsities of a project manager."
           />
           <input
             type="text"
-            className="w-5/6 p-3 focus:outline-0 bg-[#04151b] border-[1px] border-slate-300 placeholder:text-slate-400 mt-2 mb-2"
+            className="lg:w-5/6 w-full p-3 focus:outline-0 bg-[#04151b] border-[1px] border-slate-300 placeholder:text-slate-400 mt-2 mb-2"
             placeholder="Example: Defines the roles and responsities of a project manager."
           />
           <h4 className="mt-3 font-semibold text-blue-500">
@@ -54,7 +54,7 @@ export default function Learner() {
         <section className="pt-5 pb-5">
           <input
             type="text"
-            className="w-5/6 p-3 focus:outline-0 bg-[#04151b] border-[1px] border-slate-300 placeholder:text-slate-400 mt-2 mb-2"
+            className="lg:w-5/6 w-full p-3 focus:outline-0 bg-[#04151b] border-[1px] border-slate-300 placeholder:text-slate-400 mt-2 mb-2"
             placeholder="Example: No prior knowledge needed. You can start as a beginner."
           />
           <h4 className="mt-3 font-semibold text-blue-500">

@@ -1,11 +1,11 @@
 export default function Recommendations() {
   return (
-    <div className="pl-10 pr-16 pt-20 pb-20">
-      <h3 className="text-3xl font-semibold">Recommendations</h3>
-      <section className="pt-6">
+    <div className="d:pl-10 md:pr-16 sm:pl-4 sm:pr-4 pl-2 pr-2 md:pt-20 md:pb-20 sm:pt-14 sm:pb-14 pt-8 pb-8">
+      <h3 className="sm:text-3xl text-2xl font-semibold">Recommendations</h3>
+      <section className="md:pt-6 sm:pt-4 pt-1">
         <div className="pt-3 pb-3">
           <h3 className="font-semibold text-lg">Planning A Course</h3>
-          <h4 className="mt-1 text-slate-300">
+          <h4 className="mt-1 sm:text-base text-sm text-slate-300">
             When planning a course on an online education platform, several key
             considerations must be taken into account to ensure its success and
             effectiveness. First and foremost, it is essential to define clear
@@ -24,7 +24,7 @@ export default function Recommendations() {
         </div>
         <div className="pt-3 pb-3">
           <h3 className="font-semibold text-lg">Uploading Videos</h3>
-          <h4 className="mt-1 text-slate-300">
+          <h4 className="mt-1 sm:text-base text-sm text-slate-300">
             When uploading videos for a course on an online education platform,
             it is crucial to prioritize several key considerations to ensure the
             videos' effectiveness and engagement. The video quality should be of
@@ -49,7 +49,7 @@ export default function Recommendations() {
         </div>
         <div className="pt-3 pb-3">
           <h3 className="font-semibold text-lg">Engaging With Learners</h3>
-          <h4 className="mt-1 text-slate-300">
+          <h4 className="mt-1 sm:text-base text-sm text-slate-300">
             Being an instructor is about more than just publishing a course.
             It’s important that you build a connection with your learners
             through an online setting. Successful instructors are more than just

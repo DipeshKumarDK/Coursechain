@@ -18,7 +18,7 @@ export default function Statistics() {
   const [sort, setSort] = useState(0);
 
   const changeSort = () => {
-    if (filters === 0) {
+    if (sort === 0) {
       setSort(1);
     } else {
       setSort(0);
@@ -26,12 +26,12 @@ export default function Statistics() {
   };
 
   return (
-    <div className="pl-10 pr-10 pt-20 pb-20">
+    <div className="md:pl-10 md:pr-10 sm:pl-4 sm:pr-4 pl-2 pr-2 md:pt-20 md:pb-20 sm:pt-14 sm:pb-14 pt-8 pb-8">
       <h3 className="text-3xl font-semibold">Overview</h3>
       <h4 className="text-[0.9rem] text-slate-300 mt-2">
         Get top insights about your performance
       </h4>
-      <section className="pt-8 flex gap-[25px] pb-8">
+      <section className="pt-8 grid lg:grid-cols-4 xs:grid-cols-2  md:gap-[25px] gap-[15px] pb-8">
         <div className="p-4 border-[1px] border-slate-300">
           <h4 className="font-semibold text-slate-300">Total Revenue</h4>
           <h3 className="text-xl font-semibold">$4.5</h3>
@@ -53,19 +53,19 @@ export default function Statistics() {
           <h4 className="font-semibold text-slate-300">120 This Month</h4>
         </div>
       </section>
-      <h3 className="text-3xl font-semibold mt-8">Reviews</h3>
-      <section className="pt-6 flex gap-[20px]">
+      <h3 className="text-3xl font-semibold md:mt-8 sm:mt-6 mt-4">Reviews</h3>
+      <section className="pt-6 flex sm:flex-row flex-col sm:gap-[20px] gap-[12px]">
         <div className="mt-1" style={{ position: "relative" }}>
           <h4 className="font-semibold mb-2">Ratings</h4>
           <div
             onClick={changeFilters}
-            className="w-[180px] cursor-pointer pt-4 pb-4 pl-3 pr-3 bg-[#051b24] text-white flex justify-between border-[1px] border-slate-200"
+            className="sm:w-[180px] w-full cursor-pointer sm:pt-4 sm:pb-4 pt-3 pb-3 pl-3 pr-3 bg-[#051b24] text-white flex justify-between border-[1px] border-slate-200"
           >
             <h3 className="text-slate-300">All</h3>
             <RiArrowDropDownLine className="h-6 w-6 text-white bg-[#051b24] ml-2" />
           </div>
           <div
-            className={`w-[180px] bg-white pt-1 pb-1 text-slate-800 border-[1px] border-slate-200 ${
+            className={`sm:w-[180px] w-full z-20 bg-white pt-1 pb-1 text-slate-800 border-[1px] border-slate-200 ${
               filters === 1 ? "" : "hidden"
             }`}
             style={{ position: "absolute", top: "98px" }}
@@ -91,13 +91,13 @@ export default function Statistics() {
           <h4 className="font-semibold mb-2">Sort By</h4>
           <div
             onClick={changeSort}
-            className="w-[180px] cursor-pointer pt-4 pb-4 pl-3 pr-3 bg-[#051b24] text-white flex justify-between border-[1px] border-slate-200"
+            className="sm:w-[180px] w-full cursor-pointer sm:pt-4 sm:pb-4 pt-3 pb-3 pl-3 pr-3 bg-[#051b24] text-white flex justify-between border-[1px] border-slate-200"
           >
             <h3 className="text-slate-300">Newest First</h3>
             <RiArrowDropDownLine className="h-6 w-6 text-white bg-[#051b24] ml-2" />
           </div>
           <div
-            className={`w-[180px] bg-white pt-1 pb-1 text-slate-800 border-[1px] border-slate-200 ${
+            className={`sm:w-[180px] w-full z-20 bg-white pt-1 pb-1 text-slate-800 border-[1px] border-slate-200 ${
               sort === 1 ? "" : "hidden"
             }`}
             style={{ position: "absolute", top: "98px" }}

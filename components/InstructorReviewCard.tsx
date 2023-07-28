@@ -3,7 +3,7 @@ import pic from "../assets/profile.jpg";
 
 export default function InstructorReviewCard() {
   return (
-    <div className="pt-4 pb-4 pl-3 pr-2 border-[1px]  border-slate-600 w-full">
+    <div className="pt-4 pb-4 sm:pl-3 pl-1 sm:pr-2 pr-2 border-[1px]  border-slate-600 w-full">
       <section className="flex">
         <Image
           src={pic}
