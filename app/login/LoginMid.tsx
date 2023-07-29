@@ -1,4 +1,5 @@
 import bg from "../../assets/bg1.png";
+import Link from "next/link";
 
 export default function LoginMid() {
   return (
@@ -34,7 +35,7 @@ export default function LoginMid() {
       <h3 className="pt-3 pb-3 mt-7 w-[100px] text-center rounded bg-[#0f556e]">
         Continue
       </h3>
-      <h2 className="mt-5 text-sm">Don't have an account? <span className="underline text-blue-400">Register</span></h2>
+      <Link href={'/register'} className="mt-5 text-sm">Don't have an account? <span className="underline text-blue-400">Register</span></Link>
     </div>
   );
 }

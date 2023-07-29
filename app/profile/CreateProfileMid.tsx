@@ -17,13 +17,15 @@ export default function CreateProfileMid() {
     }
   }
 
+  const [comp,setComp] = useState('profile')
+
   return (
     <div className="xl:pl-20 xl:pr-20 lg:pl-14 lg:pr-14 md:pl-10 md:pr-10 sm:pl-6 sm:pr-6 pl-2 pr-2 pt-12 pb-8 bg-black text-white">
       <h2 className="font-semibold text-3xl">Set Up Your Profile</h2>
       <section className="mt-10 md:flex hidden border-b-[0.5px] border-slate-500">
-        <h3 className="pl-3 pr-3 pt-3 pb-3 font-semibold border-b-[2px] border-slate-200">TH Profile</h3>
-        <h3 className="pl-3 pr-3 pt-3 pb-3 font-semibold">Profile Picture</h3>
-        <h3 className="pl-3 pr-3 pt-3 pb-3 font-semibold">Privacy Setting</h3>
+        <h3 onClick={()=>setComp('profile')} className={`pl-3 pr-3 pt-3 pb-3 cursor-pointer font-semibold ${comp==='profile'?'border-b-[3px] border-green-400 text-green-400':''}`}>TH Profile</h3>
+        <h3 onClick={()=>setComp('picture')} className={`pl-3 pr-3 pt-3 pb-3 cursor-pointer font-semibold ${comp==='picture'?'border-b-[3px] border-green-400 text-green-400':''}`}>Profile Picture</h3>
+        <h3 onClick={()=>setComp('setting')} className={`pl-3 pr-3 pt-3 pb-3 cursor-pointer font-semibold ${comp==='setting'?'border-b-[3px] border-green-400 text-green-400':''}`}>Privacy Setting</h3>
       </section>
       <div className="mt-8 md:hidden" style={{position: 'relative'}}>
             <h4 className="font-semibold mb-4">Select Options</h4>
@@ -37,19 +39,19 @@ export default function CreateProfileMid() {
             }`}
             style={{ position: "absolute", top: "98px" }}
           >
-            <h3 className="text-sm pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
+            <h3 onClick={()=>setComp('profile')} className="text-sm pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
             TH Profile
             </h3>
-            <h3 className="text-sm pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
+            <h3 onClick={()=>setComp('picture')} className="text-sm pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
             Profile Picture
             </h3>
-            <h3 className="text-sm pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
+            <h3 onClick={()=>setComp('setting')} className="text-sm pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
             Privacy Setting
             </h3>
           </div>
           </div> 
-      {/* <THProfile/> */}
-      <ProfileImage/>
+      <THProfile comp={comp}/>
+      <ProfileImage comp={comp}/>
     </div>
   );
 }

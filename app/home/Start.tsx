@@ -1,5 +1,6 @@
 import { FaUserGraduate } from 'react-icons/fa';
 import bg from '../../assets/bg1.png'
+import Link from "next/link";
 
 export default function Start() {
   return (
@@ -19,7 +20,7 @@ export default function Start() {
             <div className='pl-4 pr-4'>
               <h3 className='text-lg font-semibold'>Explore Trending Courses</h3>
               <h4 className='text-slate-200 mt-1 text-sm'>Go through a bunch of interesting courses and find the best one for you.</h4>
-              <h3 className='underline mt-1 text-blue-400 cursor-pointer'>Explore</h3>
+              <Link href={'/all'} className='underline mt-1 text-blue-400 cursor-pointer'>Explore</Link>
             </div>
           </div>
           <div className='flex border-[1px] border-slate-200 p-4'>
@@ -29,7 +30,7 @@ export default function Start() {
             <div className='pl-4 pr-4'>
               <h3 className='text-lg font-semibold'>Complete Your Courses</h3>
               <h4 className='text-slate-200 mt-1 text-sm'>Make the best out of the courses that you are enrolled in.</h4>
-              <h3 className='underline mt-1 text-blue-400 cursor-pointer'>Continue</h3>
+              <Link href={'/learning'} className='underline mt-1 text-blue-400 cursor-pointer'>Continue</Link>
             </div>
           </div>
           <div className='flex border-[1px] border-slate-200 p-4'>
@@ -39,7 +40,7 @@ export default function Start() {
             <div className='pl-4 pr-4'>
               <h3 className='text-lg font-semibold'>Become A Teacher</h3>
               <h4 className='text-slate-200 mt-1 text-sm'>Upload your own courses and course materials and start making money.</h4>
-              <h3 className='underline mt-1 text-blue-400 cursor-pointer'>Upload</h3>
+              <Link href={'/instructor'} className='underline mt-1 text-blue-400 cursor-pointer'>Upload</Link>
             </div>
           </div>
         </section>

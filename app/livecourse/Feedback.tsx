@@ -4,7 +4,7 @@ import ReviewCard from "@/components/ReviewCard";
 import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-export default function Feedback() {
+export default function Feedback({ comp }: { comp: string }) {
 
     const [filters, setFilters] = useState(0);
   
@@ -18,7 +18,7 @@ export default function Feedback() {
   
 
     return (
-      <div className="pt-10 pb-12">
+      <div className={`pt-10 pb-12 ${comp === 'review'?'':'hidden'}`}>
          <h2 className="text-xl font-semibold">Student Feedback</h2>
          <div className="mt-6 h-64 w-full border-[2px] border-slate-200"></div>
          <div className="mt-8" style={{position: 'relative'}}>

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import pic from "../../assets/hacker.webp"
 
-export default function ProfileImage() {
+export default function ProfileImage({ comp }: { comp: string }) {
   return (
-    <div className="pt-10 pb-10 lg:w-1/2 md:w-2/3 sm:w-3/4 w-full">
+    <div className={`pt-10 pb-10 lg:w-1/2 md:w-2/3 sm:w-3/4 w-full ${comp==='picture'?'':'hidden'}`}>
       <h3 className="font-semibold text-xl">Profile Image</h3>
       <h4 className="mt-1 text-sm text-slate-300">Upload your profile image. You can choose to make it publicly visible or not.</h4>
       <div className="p-2 border-[1px] border-slate-300 mt-5">

@@ -1,6 +1,6 @@
-export default function Recommendations() {
+export default function Recommendations({ comp }: { comp: string }) {
   return (
-    <div className="d:pl-10 md:pr-16 sm:pl-4 sm:pr-4 pl-2 pr-2 md:pt-20 md:pb-20 sm:pt-14 sm:pb-14 pt-8 pb-8">
+    <div className={`md:pl-10 md:pr-16 sm:pl-4 sm:pr-4 pl-2 pr-2 md:pt-20 md:pb-20 sm:pt-14 sm:pb-14 pt-8 pb-8 ${comp==='explore'?'':'hidden'}`}>
       <h3 className="sm:text-3xl text-2xl font-semibold">Recommendations</h3>
       <section className="md:pt-6 sm:pt-4 pt-1">
         <div className="pt-3 pb-3">

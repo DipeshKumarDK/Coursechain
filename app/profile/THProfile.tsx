@@ -1,6 +1,6 @@
-export default function THProfile() {
+export default function THProfile({ comp }: { comp: string }) {
   return (
-    <form className="pt-10 pb-10">
+    <form className={`pt-10 pb-10 ${comp === 'profile'?'':'hidden'}`}>
       <div className="grid xs:grid-cols-2 grid-cols-1 sm:gap-[25px] gap-[15px]">
         <section>
           <h4 className="font-semibold mb-1">Full Name</h4>

@@ -1,4 +1,5 @@
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import Link from "next/link";
 
 export default function CourseHeader() {
   return (
@@ -8,7 +9,7 @@ export default function CourseHeader() {
           <MdOutlineArrowBackIosNew className="h-5 mt-[2px] w-5" />
         </div>
         <div className="flex flex-col justify-center">
-          <h4 className="ml-2">Back to courses</h4>
+          <Link href={'/instructor'} className="ml-2">Back to courses</Link>
         </div>
       </section>
       <div className="flex flex-col justify-center">

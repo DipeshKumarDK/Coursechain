@@ -1,9 +1,10 @@
 import Image from "next/image";
 import pic from "../assets/purple.jpg";
+import Link from "next/link";
 
 export default function IndividualCourse() {
   return (
-    <div className="border-[1px] border-slate-200 md:p-6 p-2 flex md:flex-row flex-col">
+    <Link href={'/course'} className="border-[1px] border-slate-200 md:p-6 p-2 flex md:flex-row flex-col">
       <Image src={pic} alt="/" className="md:w-2/6 w-full h-64" />
       <section className="md:w-3/6 w-full md:pt-0 pt-4 lg:pl-6 md:pl-4 md:pr-4 lg:pr-6 pl-2 pr-2 flex flex-col justify-between">
         <div>
@@ -33,6 +34,6 @@ export default function IndividualCourse() {
         </div>
         <h3 className="font-semibold text-lg">$ 520</h3>
       </section>
-    </div>
+    </Link>
   );
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import pic from "../../assets/profile.jpg";
 
-export default function AboutCourse() {
+export default function AboutCourse({ comp }: { comp: string }) {
   let arr = [
     "Solidity",
     "Hardhat",
@@ -13,7 +13,7 @@ export default function AboutCourse() {
   ];
 
   return (
-    <section className="pt-3 pb-3">
+    <section className={`pt-3 pb-3 ${comp === 'overview'?'':'hidden'}`}>
       <div className="pt-8 pb-8 border-b-[0.5px] border-slate-500 pl-5 pr-5">
         <h2 className="sm:text-xl text-lg font-semibold">About This Course</h2>
         <h4 className="text-slate-200 sm:text-[1rem] text-[0.85rem] mt-3 sm:w-2/3">

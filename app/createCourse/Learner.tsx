@@ -1,7 +1,7 @@
-export default function Learner() {
+export default function Learner({ comp }: { comp: string }) {
   return (
-    <div className="">
-      <section className="md:pt-10 md:pb-10 pt-6 pb-6 md:pl-8 pl-3 md:pr-8 pr-3 border-b-[1px] border-slate-400"> 
+    <div className={`${comp==='learner'?'':'hidden'}`}>
+      <section className="md:pt-10 md:pb-10 pt-6 pb-6 md:pl-8 pl-3 md:pr-8 pr-3 border-b-[1px] border-slate-400">
         <h3 className="font-semibold text-2xl">Intended Learners</h3>
       </section>
       <div className="pt-10 pb-10 md:pl-8 lg:pr-0 md:pr-8 sm:pl-4 sm:pr-4 pl-2 pr-2 lg:w-5/6 w-full">

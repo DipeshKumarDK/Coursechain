@@ -1,5 +1,9 @@
 import pic from "../../assets/homemid.webp"
 import Image from "next/image";
+import { anuphan } from "@/styles/fonts";
+import { Anuphan } from 'next/font/google'
+import Link from "next/link";
+
 
 export default function HomeMid() {
   return (
@@ -12,8 +16,8 @@ export default function HomeMid() {
           and companies.
         </h3>
         <div className="flex mt-5">
-           <h2 className="xl:pt-6 xl:pb-6 lg:pt-4 lg:pb-4 sm:pt-3 sm:pb-3 pt-1 pb-2 xl:pl-10 xl:pr-10 lg:pl-6 lg:pr-6 sm:pl-5 sm:pr-5 pl-3 pr-3 bg-[#b1e1f5] text-slate-900 font-semibold rounded sm:text-base text-sm roboto">Join For Free</h2>
-           <h2 className="xl:pt-6 xl:pb-6 lg:pt-4 lg:pb-4 sm:pt-3 sm:pb-3 pt-1 pb-2 xl:pl-10 xl:pr-10 lg:pl-6 lg:pr-6 sm:pl-5 sm:pr-5 pl-3 pr-3 border-[2px] border-[#b3e2f4] font-semibold rounded ml-2 text-[#c1e9f8] sm:text-base text-sm roboto">Try MyCourse For Teaching</h2>
+           <Link href={'/register'} className={`xl:pt-6 xl:pb-6 lg:pt-4 lg:pb-4 sm:pt-3 sm:pb-3 pt-1 pb-2 xl:pl-10 xl:pr-10 lg:pl-6 lg:pr-6 sm:pl-5 sm:pr-5 pl-3 pr-3 bg-[#b1e1f5] text-slate-900 font-semibold rounded sm:text-base text-sm ${anuphan.className}`}>Join For Free</Link>
+           <Link href={'/instructor'} className={`xl:pt-6 xl:pb-6 lg:pt-4 lg:pb-4 sm:pt-3 sm:pb-3 pt-1 pb-2 xl:pl-10 xl:pr-10 lg:pl-6 lg:pr-6 sm:pl-5 sm:pr-5 pl-3 pr-3 border-[2px] border-[#b3e2f4] font-semibold rounded ml-2 text-[#c1e9f8] sm:text-base text-sm ${anuphan.className}`}>Try MyCourse For Teaching</Link>
         </div>
       </section>
       <section className="w-1/2 h-full lg:flex hidden justify-center">

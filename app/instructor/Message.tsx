@@ -4,7 +4,7 @@ import InstructorQuestionCard from "@/components/InstructorQuestionCard";
 import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-export default function Message() {
+export default function Message({ comp }: { comp: string }) {
 
   const [filters, setFilters] = useState(0);
 
@@ -17,7 +17,7 @@ export default function Message() {
   };
 
   return (
-    <div className="md:pl-10 md:pr-10 sm:pl-4 sm:pr-4 pl-2 pr-2 pt-20 pb-20">
+    <div className={`md:pl-10 md:pr-10 sm:pl-4 sm:pr-4 pl-2 pr-2 pt-20 pb-20 ${comp==='messages'?'':'hidden'}`}>
       <h3 className="text-2xl font-semibold">Q&A From Your Courses</h3>
       <section>
       <div className="mt-8" style={{ position: "relative" }}>

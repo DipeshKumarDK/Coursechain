@@ -5,7 +5,7 @@ import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-export default function Questions() {
+export default function Questions({ comp }: { comp: string }) {
 
   const [sorts, setSorts] = useState(0);
   const [filters, setFilters] = useState(0);
@@ -40,7 +40,7 @@ export default function Questions() {
   console.log(visible)
 
   return (
-    <div className="pt-8 pb-8 flex justify-center">
+    <div className={`pt-8 pb-8 flex justify-center ${comp === 'qna'?'':'hidden'}`}>
       <section className={`w-2/3 ${visible===0 ? '':'hidden'}`}>
         <h3 onClick={()=>setVisible(1)} className="w-[250px] cursor-pointer border-[2px] border-slate-200 text-center font-semibold pt-2 pb-2">
           Back to all questions

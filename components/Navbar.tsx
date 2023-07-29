@@ -10,6 +10,7 @@ import { AiOutlineBell } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { RiArrowDropRightLine } from "react-icons/ri";
 import { RxHamburgerMenu } from "react-icons/rx";
+import Link from "next/link";
 
 export default function Navbar() {
   const [visible, setVisible] = useState(1);
@@ -38,7 +39,9 @@ export default function Navbar() {
     <>
       <section className="md:flex hidden border-b-[1px] border-t-[1px] border-slate-200 pl-5 pr-5 bg-[#04151b] text-white top-0">
         <div className="flex flex-col justify-center">
-        <Image src={logo} alt="Logo" className="h-10 w-16" />
+          <Link href={'/home'}>
+            <Image src={logo} alt="Logo" className="h-10 w-16" />
+          </Link>  
         </div>
         <section className="flex flex-grow justify-between h-full w-full pl-6 pr-6">
           <div className="flex" style={{ position: "relative" }}>
@@ -120,9 +123,9 @@ export default function Navbar() {
                 Turn what you know into an opportunity and reach millions around
                 the world.
               </h3>
-              <h4 className="mt-3 w-full pt-2 pb-2 text-center bg-black text-white">
-                Learn More
-              </h4>
+              <div className="mt-3 w-full pt-2 pb-2 text-center bg-black text-white">
+                <Link href={"/instructor"}>Learn More</Link>
+              </div>
             </div>
             <h4
               className="text-sm font-semibold pt-5 pb-5 text-[#c1e9f8] cursor-pointer lg:block md:hidden"
@@ -150,18 +153,20 @@ export default function Navbar() {
               <h3 className="font-bold text-center text-lg leading-5">
                 Continue your learning journey from where you left it.
               </h3>
-              <h4 className="mt-3 w-full pt-2 pb-2 text-center bg-black text-white">
-                Go to My Learning
-              </h4>
+              <div className="mt-3 w-full pt-2 pb-2 text-center bg-black text-white">
+                <Link href={"/learning"}>Go to My Learning</Link>
+              </div>
             </div>
             <AiOutlineHeart className="h-6 w-6 ml-5 mt-[18px] mb-4 lg:block md:hidden" />
             <AiOutlineShoppingCart className="h-6 w-6 ml-5 mt-[18px] mb-4" />
             <AiOutlineBell className="h-6 w-6 ml-5 mt-[18px] mb-4 lg:block md:hidden" />
-            <Image
-              src={profile}
-              alt="profile"
-              className="h-8 w-8 ml-5 rounded-full mt-[14px] mb-3"
-            />
+            <Link href={"/profile"}>
+              <Image
+                src={profile}
+                alt="profile"
+                className="h-8 w-8 ml-5 rounded-full mt-[14px] mb-3"
+              />
+            </Link>
           </div>
         </section>
       </section>
@@ -170,19 +175,60 @@ export default function Navbar() {
           visible === 1 ? "md:flex" : "md:hidden"
         }`}
       >
-        <h4 className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8]">Development</h4>
-        <h4 className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3">Business</h4>
-        <h4 className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8]">Finance & Accounting</h4>
-        <h4 className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3">IT & Software</h4>
-        <h4 className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8]">Design</h4>
-        <h4 className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3">Marketing</h4>
-        <h4 className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8] lg:block hidden">
+        <Link
+          href={"/all"}
+          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8]"
+        >
+          Development
+        </Link>
+        <Link
+          href={"/all"}
+          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3"
+        >
+          Business
+        </Link>
+        <Link
+          href={"/all"}
+          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8]"
+        >
+          Finance & Accounting
+        </Link>
+        <Link
+          href={"/all"}
+          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3"
+        >
+          IT & Software
+        </Link>
+        <Link
+          href={"/all"}
+          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8]"
+        >
+          Design
+        </Link>
+        <Link
+          href={"/all"}
+          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3"
+        >
+          Marketing
+        </Link>
+        <Link
+          href={"/all"}
+          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8] lg:block hidden"
+        >
           Personal Development
-        </h4>
-        <h4 className="text-sm text-[#c1e9f8] hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 xl:block hidden">
+        </Link>
+        <Link
+          href={"/all"}
+          className="text-sm text-[#c1e9f8] hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 xl:block hidden"
+        >
           Health & Fitness
-        </h4>
-        <h4 className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 xl:block hidden">Music</h4>
+        </Link>
+        <Link
+          href={"/all"}
+          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 xl:block hidden"
+        >
+          Music
+        </Link>
       </section>
       <section
         className="flex md:hidden justify-between pr-3 border-b-[1px] border-t-[1px] border-slate-200 bg-[#09384b] text-white"
@@ -198,54 +244,87 @@ export default function Navbar() {
         >
           <div className="w-[260px] pt-1 pb-1 pl-2 pr-2">
             <h2 className="font-semibold text-slate-600 mb-1 mt-1">Learn</h2>
-            <div className="flex justify-between pt-2 pb-2 text-sm">
+            <Link
+              href={"/all"}
+              className="flex justify-between pt-2 pb-2 text-sm"
+            >
               <h3 className="text-slate-800">My Learning</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </div>
+            </Link>
             <div className="mt-2 mb-2 h-[1px] bg-slate-400"></div>
             <h2 className="font-semibold text-slate-600 mb-1 mt-5">
               Categories
             </h2>
-            <div className="flex justify-between pt-2 pb-2 text-sm">
+            <Link
+              href={"/all"}
+              className="flex justify-between pt-2 pb-2 text-sm"
+            >
               <h3 className="text-slate-800">Development</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </div>
-            <div className="flex justify-between pt-2 pb-2 text-sm">
+            </Link>
+            <Link
+              href={"/all"}
+              className="flex justify-between pt-2 pb-2 text-sm"
+            >
               <h3 className="text-slate-800">Business</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </div>
-            <div className="flex justify-between pt-2 pb-2 text-sm">
+            </Link>
+            <Link
+              href={"/all"}
+              className="flex justify-between pt-2 pb-2 text-sm"
+            >
               <h3 className="text-slate-800">Finance & Accounting</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </div>
-            <div className="flex justify-between pt-2 pb-2 text-sm">
+            </Link>
+            <Link
+              href={"/all"}
+              className="flex justify-between pt-2 pb-2 text-sm"
+            >
               <h3 className="text-slate-800">IT & Software</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </div>
-            <div className="flex justify-between pt-2 pb-2 text-sm">
+            </Link>
+            <Link
+              href={"/all"}
+              className="flex justify-between pt-2 pb-2 text-sm"
+            >
               <h3 className="text-slate-800">Personal Development</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </div>
-            <div className="flex justify-between pt-2 pb-2 text-sm">
+            </Link>
+            <Link
+              href={"/all"}
+              className="flex justify-between pt-2 pb-2 text-sm"
+            >
               <h3 className="text-slate-800">Math & Logic</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </div>
-            <div className="flex justify-between pt-2 pb-2 text-sm">
+            </Link>
+            <Link
+              href={"/all"}
+              className="flex justify-between pt-2 pb-2 text-sm"
+            >
               <h3 className="text-slate-800">Design</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </div>
-            <div className="flex justify-between pt-2 pb-2 text-sm">
+            </Link>
+            <Link
+              href={"/all"}
+              className="flex justify-between pt-2 pb-2 text-sm"
+            >
               <h3 className="text-slate-800">Health & Fitness</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </div>
-            <div className="flex justify-between pt-2 pb-2 text-sm">
+            </Link>
+            <Link
+              href={"/all"}
+              className="flex justify-between pt-2 pb-2 text-sm"
+            >
               <h3 className="text-slate-800">Marketing</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </div>
-            <div className="flex justify-between pt-2 pb-2 text-sm">
+            </Link>
+            <Link
+              href={"/all"}
+              className="flex justify-between pt-2 pb-2 text-sm"
+            >
               <h3 className="text-slate-800">Music</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </div>
+            </Link>
           </div>
         </section>
         <Image src={logo} alt="Logo" className="h-14 w-14" />

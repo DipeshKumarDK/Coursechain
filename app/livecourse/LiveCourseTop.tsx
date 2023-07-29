@@ -3,11 +3,14 @@ import logo from "../../assets/logo2.png";
 import {AiFillStar} from "react-icons/ai"
 import {IoIosShareAlt} from "react-icons/io"
 import {BsThreeDotsVertical} from "react-icons/bs"
+import Link from "next/link";
 
 export default function LiveCourseTop() {
   return (
     <div className="flex justify-between text-white bg-[#041217] sm:pl-5 sm:pr-5 pl-2 pr-2">
-      <Image src={logo} alt="Logo" className="h-14 w-14 mt-1 mb-1 md:block hidden" />
+      <Link href={'/home'}>
+        <Image src={logo} alt="Logo" className="h-14 w-14 mt-1 mb-1 md:block hidden" />
+      </Link>
       <section className="flex flex-col justify-center lg:max-w-[650px] sm:max-w-[300px] max-w-[240px]">
         <h2 className="md:text-lg truncate">
           Complete DApp - Solidity & React - Blockchain Development

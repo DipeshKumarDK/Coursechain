@@ -5,8 +5,9 @@ import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import Journey from "./Journey";
+import Link from "next/link";
 
-export default function Courses() {
+export default function Courses({ comp }: { comp: string }) {
   const [filters, setFilters] = useState(0);
 
   const changeFilters = () => {
@@ -18,7 +19,7 @@ export default function Courses() {
   };
 
   return (
-    <div className="md:pl-10 md:pr-10 sm:pl-4 sm:pr-4 pl-2 pr-2 md:pt-20 md:pb-20 sm:pt-14 sm:pb-14 pt-8 pb-8">
+    <div className={`md:pl-10 md:pr-10 sm:pl-4 sm:pr-4 pl-2 pr-2 md:pt-20 md:pb-20 sm:pt-14 sm:pb-14 pt-8 pb-8 ${comp==='courses'?'':'hidden'}`}>
       <h2 className="sm:text-3xl text-2xl font-semibold">Courses</h2>
       <div className="lg:hidden sm:mt-6 mt-4 w-[130px] flex flex-col bg-[#094c5b] pt-3 pb-3 rounded justify-center">
         <h3 className="font-semibold text-center">New Course</h3>
@@ -61,7 +62,7 @@ export default function Courses() {
         </div>
         </div>
         <div className="lg:flex hidden flex-col bg-[#094c5b] pl-3 pr-3 rounded justify-center">
-           <h3 className="font-semibold">New Course</h3>
+           <Link href={'/createCourse'} className="font-semibold">New Course</Link>
         </div>
       </div>
       <section className="md:mt-10 sm:mt-6 mt-4">

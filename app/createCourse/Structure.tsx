@@ -1,6 +1,6 @@
-export default function Structure() {
+export default function Structure({ comp }: { comp: string }) {
   return (
-    <div className="">
+    <div className={`${comp==='structure'?'':'hidden'}`}>
       <section className="md:pt-10 md:pb-10 pt-6 pb-6 pl-8 pr-8 border-b-[1px] border-slate-400">
         <h3 className="font-semibold text-2xl">Course Structure</h3>
       </section>

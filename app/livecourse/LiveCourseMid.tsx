@@ -19,6 +19,8 @@ export default function LiveCourseMid() {
     }
   }
 
+  const [comp,setComp] = useState('overview')
+
   return (
     <div className="bg-black text-white pb-10">
       <section className="w-full lg:h-[80vh] md:h-[60vh] h-[60vh]">
@@ -33,11 +35,11 @@ export default function LiveCourseMid() {
       </section>
       <div className="2xl:pl-56 2xl:pr-56 xl:pl-44 xl:pr-44 lg:pl-32 lg:pr-32 md:pl-16 md:pr-16 sm:pl-10 sm:pr-10 pl-2 pr-2">
         <section className="md:flex hidden border-b-[1px] border-slate-300">
-          <h3 className="text-sm font-semibold pl-4 pr-4 pt-5 pb-5 ">Course Content</h3>
-          <h3 className="text-sm font-semibold pl-4 pr-4 pt-5 pb-5 ">Overview</h3>
-          <h3 className="text-sm font-semibold pl-4 pr-4 pt-5 pb-5 ">Q&A</h3>
-          <h3 className="text-sm font-semibold pl-4 pr-4 pt-5 pb-5 ">Announcements</h3>
-          <h3 className="text-sm font-semibold pl-4 pr-4 pt-5 pb-5 ">Reviews</h3>
+          <h3 onClick={()=>setComp('content')} className={`text-sm cursor-pointer font-semibold pl-4 pr-4 pt-5 pb-5 ${comp==='content'?'border-b-[3px] border-green-400 text-green-400':''}`}>Course Content</h3>
+          <h3 onClick={()=>setComp('overview')} className={`text-sm cursor-pointer font-semibold pl-4 pr-4 pt-5 pb-5 ${comp==='overview'?'border-b-[3px] border-green-400 text-green-400':''}`}>Overview</h3>
+          <h3 onClick={()=>setComp('qna')} className={`text-sm cursor-pointer font-semibold pl-4 pr-4 pt-5 pb-5 ${comp==='qna'?'border-b-[3px] border-green-400 text-green-400':''}`}>Q&A</h3>
+          <h3 onClick={()=>setComp('announcement')} className={`text-sm cursor-pointer font-semibold pl-4 pr-4 pt-5 pb-5 ${comp==='announcement'?'border-b-[3px] border-green-400 text-green-400':''}`}>Announcements</h3>
+          <h3 onClick={()=>setComp('review')} className={`text-sm cursor-pointer font-semibold pl-4 pr-4 pt-5 pb-5 ${comp==='review'?'border-b-[3px] border-green-400 text-green-400':''}`}>Reviews</h3>
         </section>
         <div className="mt-8 md:hidden" style={{position: 'relative'}}>
             <h4 className="font-semibold mb-4">Select Options</h4>
@@ -51,28 +53,28 @@ export default function LiveCourseMid() {
             }`}
             style={{ position: "absolute", top: "98px" }}
           >
-            <h3 className="text-sm pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
+            <h3 onClick={()=>setComp('content')} className="text-sm cursor-pointer pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
             Course Content
             </h3>
-            <h3 className="text-sm pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
+            <h3 onClick={()=>setComp('overview')} className="text-sm cursor-pointer pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
             Overview
             </h3>
-            <h3 className="text-sm pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
+            <h3 onClick={()=>setComp('qna')} className="text-sm cursor-pointer pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
               Q&A
             </h3>
-            <h3 className="text-sm pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
+            <h3 onClick={()=>setComp('announcement')} className="text-sm cursor-pointer pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
             Announcements
             </h3>
-            <h3 className="text-sm pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
+            <h3 onClick={()=>setComp('review')} className="text-sm cursor-pointer pt-1 pb-1 pl-2 pr-2 hover:bg-blue-600 hover:text-white">
             Reviews
             </h3>
           </div>
           </div> 
         <section>
-            {/* <AboutCourse/> */}
-            {/* <Questions/> */}
-            {/* <Announcement/> */}
-            <Feedback/>
+            <AboutCourse comp={comp}/>
+            <Questions comp={comp}/>
+            <Announcement comp={comp}/>
+            <Feedback comp={comp}/>
         </section>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import bg from "../../assets/bg1.png";
+import Link from "next/link";
 
 export default function RegisterMid() {
   return (
@@ -47,10 +48,10 @@ export default function RegisterMid() {
           />
         </div>
       </form>
-      <h3 className="pt-3 pb-3 mt-7 w-[100px] text-center rounded bg-[#0f556e]">
+      <h3 className="pt-3 pb-3 mt-7 mb-5 w-[100px] text-center rounded bg-[#0f556e]">
         Continue
       </h3>
-      <h2 className="mt-5 text-sm">Already have an account? <span className="underline text-blue-400">Login</span></h2>
+      <Link href={'/login'} className="text-sm">Already have an account? <span className="underline text-blue-400">Login</span></Link>
     </div>
   );
 }

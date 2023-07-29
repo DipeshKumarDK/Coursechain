@@ -4,7 +4,7 @@ import { useState } from "react";
 import InstructorReviewCard from "@/components/InstructorReviewCard";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-export default function Statistics() {
+export default function Statistics({ comp }: { comp: string }) {
   const [filters, setFilters] = useState(0);
 
   const changeFilters = () => {
@@ -26,7 +26,7 @@ export default function Statistics() {
   };
 
   return (
-    <div className="md:pl-10 md:pr-10 sm:pl-4 sm:pr-4 pl-2 pr-2 md:pt-20 md:pb-20 sm:pt-14 sm:pb-14 pt-8 pb-8">
+    <div className={`md:pl-10 md:pr-10 sm:pl-4 sm:pr-4 pl-2 pr-2 md:pt-20 md:pb-20 sm:pt-14 sm:pb-14 pt-8 pb-8 ${comp === 'statistics'?'':'hidden'}`}>
       <h3 className="text-3xl font-semibold">Overview</h3>
       <h4 className="text-[0.9rem] text-slate-300 mt-2">
         Get top insights about your performance

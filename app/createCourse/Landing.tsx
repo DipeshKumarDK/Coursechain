@@ -3,7 +3,7 @@
 import React, { use, useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 
-export default function Landing() {
+export default function Landing({ comp }: { comp: string }) {
 
   const [language, setLanguage] = useState(0);
   const [level, setLevel] = useState(0);
@@ -34,7 +34,7 @@ export default function Landing() {
   }
 
   return (
-    <div className="">
+    <div className={`${comp==='landing'?'':'hidden'}`}>
       <section className="md:pt-10 md:pb-10 pt-6 pb-6 md:pl-8 md:pr-8 sm:pl-5 sm:pr-5 pl-2 pr-2 border-b-[1px] border-slate-400">
         <h2 className="font-semibold text-2xl">Create Course Landing Page</h2>
       </section>

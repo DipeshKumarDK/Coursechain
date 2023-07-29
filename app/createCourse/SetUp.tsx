@@ -1,6 +1,6 @@
-export default function SetUp() {
+export default function SetUp( {comp }: { comp: string }) {
   return (
-    <div className="">
+    <div className={`${comp==='setup'?'':'hidden'}`}>
       <section className="md:pt-10 md:pb-10 pt-6 pb-6 md:pl-8 md:pr-8 sm:pl-5 sm:pr-5 pl-2 pr-2 border-b-[1px] border-slate-400">
         <h3 className="font-semibold text-2xl">Setup And Demo Video</h3>
       </section>
