@@ -52,6 +52,6 @@ export default function CreateProfileMid() {
           </div> 
       <THProfile comp={comp}/>
       <ProfileImage comp={comp}/>
-    </div>
+    </div> 
   );
 }

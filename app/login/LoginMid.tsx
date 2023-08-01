@@ -30,7 +30,7 @@ export default function LoginMid() {
           password: user.password,
         }),
       });
-      if (response.status === 200) {
+      if (response.status === 200) { 
         setUser({
           email: "",
           password: "",
@@ -54,7 +54,7 @@ export default function LoginMid() {
         width: "100%",
         height: "100%",
       }}
-    >
+    > 
       <h2 className="font-semibold sm:text-2xl xs:text-xl text-lg">
         Continue Your Journey With Tutors' Hub
       </h2>

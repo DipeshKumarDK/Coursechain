@@ -1,8 +1,12 @@
+"use client"
+
+import React , {useEffect} from 'react'
 import { FaUserGraduate } from 'react-icons/fa';
 import bg from '../../assets/bg1.png'
 import Link from "next/link";
 
 export default function Start() {
+
   return (
     <div className="bg-[#04151b] text-white lg:block hidden pt-12 pb-12 xl:pl-24 xl:pr-24 lg:pl-14 lg:pr-14" style={{
       backgroundImage: `url(${bg.src})`,

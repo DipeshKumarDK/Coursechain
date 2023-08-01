@@ -17,6 +17,27 @@ export async function POST(req, res) {
         })
 
     }catch (e) {
+        console.log(e);
+        return NextResponse.json(
+            { message: "Server error, please try again!" },
+            { status: 500 }
+        )
+    }
+}
+
+export async function GET(req, res) {
+    try {
+
+        const body = await req.json();
+        await dbConn();
+
+        const res = await Profile.find({});
+
+        return NextResponse.json(res, {
+            status: 200
+        })
+
+    }catch (e) {
         return NextResponse.json(
             { message: "Server error, please try again!" },
             { status: 500 }

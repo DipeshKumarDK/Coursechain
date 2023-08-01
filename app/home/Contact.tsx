@@ -1,14 +1,40 @@
+"use client"
+
+import React , {useEffect} from 'react'
 import { AiFillMail } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
+import { motion , useAnimation } from "framer-motion"
+import {useInView} from "react-intersection-observer";
 
 export default function Contact() {
+
+  const { ref, inView } = useInView();
+  const animation = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      animation.start({
+        rotateX: 0,
+        transition: {
+          duration: 5,
+          type: "spring",
+        },
+      }); 
+    }
+    if (!inView) {
+      animation.start({
+        rotateX: 720,
+      });
+    }
+  }, [inView]);
+
   return (
-    <div className="bg-[#020b0e] text-white pt-10 pb-10 2xl:pl-64 2xl:pr-64 xl:pl-52 xl:pr-52 lg:pl-32 lg:pr-32 sm:pl-8 sm:pr-8 pl-4 pr-4 border-b-[1px] border-slate-200">
+    <div ref={ref} className="bg-[#020b0e] text-white pt-10 pb-10 2xl:pl-64 2xl:pr-64 xl:pl-52 xl:pr-52 lg:pl-32 lg:pr-32 sm:pl-8 sm:pr-8 pl-4 pr-4 border-b-[1px] border-slate-200">
       <div className="md:flex pt-2">
         <section className="md:w-1/2 w-full pr-10">
-          <h2 className="md:text-3xl text-2xl md:text-left text-center font-semibold">Having A Doubt?</h2>
+          <motion.h2 animate={animation} className="md:text-3xl text-2xl md:text-left text-center font-semibold">Having A Doubt?</motion.h2>
           <div className="flex md:justify-start justify-center">
           <div className="h-[2px] w-[100px] bg-white mt-3 rounded"></div>
           </div>
