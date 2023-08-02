@@ -14,8 +14,14 @@ import Contact from "./Contact";
 import Footer from "@/components/Footer";
 import TrendingQuote from "./TrendingQuote";
 import { useEffect } from "react";
+import type { RootState } from '../GlobalRedux/store';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeUser } from '../GlobalRedux/Features/user/userSlice';
 
 export default function HomePage() {
+
+  const user = useSelector((state: RootState) => state.user.value);
+  console.log(user)
 
   return (
     <main>

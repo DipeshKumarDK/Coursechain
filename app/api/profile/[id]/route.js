@@ -10,7 +10,9 @@ export async function GET(req, { params }) {
 
         const { id } = params;
 
-        const res = await Profile.find({userid: id});
+        console.log(id)
+
+        const res = await Profile.findById({id});
 
         return NextResponse.json(res, {
             status: 200
@@ -29,16 +31,16 @@ export async function GET(req, { params }) {
 
 export async function PUT(req, { params }) {
     try {
-
-        const body = await req.json();
         await dbConn();
 
         const { id } = params;
 
-        const res = await Profile.findByIdAndUpdate(id, {body});
+        const { username:username, headline:headline, website:website, twitter:twitter, linkedin:linkedin, youtube:youtube, biography:biography, image:image } = await req.json();
+
+        const res = await Profile.findByIdAndUpdate(id, {username, headline, website, twitter, linkedin, youtube, biography, image});
 
         return NextResponse.json("Updated", {
-            status: 200
+            status: 200 
         })
 
     }catch (e) {

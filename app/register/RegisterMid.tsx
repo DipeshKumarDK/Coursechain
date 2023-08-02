@@ -2,13 +2,24 @@
 
 import bg from "../../assets/bg1.png";
 import Link from "next/link";
-import { useState } from "react";
+import { useState } from "react"; 
 
 export default function RegisterMid() {
   const [user, setUser] = useState({
     username: "",
     email: "",
     password: "",
+  });
+
+  const [profile, setProfile] = useState({
+    email: "",
+    username: "",
+    headline: "none",
+    website: "none",
+    twitter: "none",
+    linkedin: "none",
+    youtube: "none",
+    biography: "none", 
   });
 
   function handleChange(e: any) {
@@ -20,7 +31,7 @@ export default function RegisterMid() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-
+    let id = "none"
     try {
       const response = await fetch("/api/user", {
         method: "POST",
@@ -37,7 +48,42 @@ export default function RegisterMid() {
           email: "",
           password: "",
         });
-        console.log("success");
+        response.json().then((data) => {
+          id = data?.res[0]?._id.toString();
+          console.log(id);
+        });
+      } else {
+        console.log("error");
+      }
+      const resp = await fetch("/api/profile", {
+        method: "POST",
+        headers: { Content_Type: "application/json" },
+        body: JSON.stringify({
+          email: user.email,
+          username: user.username,
+          headline: profile.headline,
+          website: profile.website,
+          twitter: profile.twitter,
+          linkedin: profile.linkedin,
+          youtube: profile.youtube,
+          biography: profile.biography,
+          image: "",
+        }),
+      });
+      if (resp.status === 200) {
+        setProfile({
+          email: "",
+          username: "",
+          headline: "",
+          website: "",
+          twitter: "",
+          linkedin: "",
+          youtube: "",
+          biography: "",
+        });
+        resp.json().then((data) => {
+          console.log(data);
+        });
       } else {
         console.log("error");
       }

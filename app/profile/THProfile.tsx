@@ -1,18 +1,64 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import type { RootState } from '../GlobalRedux/store';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeUser } from '../GlobalRedux/Features/user/userSlice';
 
 export default function THProfile({ comp }: { comp: string }) {
   const [profile, setProfile] = useState({
-    userid: "idhubhai",
-    username: "",
-    headline: "",
-    website: "",
-    twitter: "",
-    linkedin: "",
-    youtube: "",
-    biography: "",
+    username: "none",
+    headline: "none",
+    website: "none",
+    twitter: "none",
+    linkedin: "none",
+    youtube: "none",
+    biography: "none", 
+    image: "none"
   });
+
+  const user = useSelector((state: RootState) => state.user.value);
+  console.log(user?.payload?.email)
+
+  const [searchId, setSearchId] = useState("")
+
+  const handleGet = async () => {
+    try {
+      const response = await fetch("/api/profile/get", {
+        method: "POST",
+        headers: { Content_Type: "application/json" },
+        body : JSON.stringify({
+          email: user?.payload?.email
+        })
+      });
+      if (response.status === 200) {
+        response.json().then((data) => {
+          console.log(data);
+          setSearchId(data._id)
+          setProfile({
+            username: data?.username,
+            headline: data?.headline,
+            website: data?.website,
+            twitter: data?.twitter,
+            linkedin: data?.linkedin,
+            youtube: data?.youtube,
+            biography: data?.biography,
+            image:data?.image
+          });
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+
+  useEffect(() => {
+    handleGet()
+  }, [user])
+  
 
   function handleChange(e: any) {
     const name = e.target.name;
@@ -25,11 +71,10 @@ export default function THProfile({ comp }: { comp: string }) {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/profile", {
-        method: "POST",
+      const response = await fetch("/api/profile/"+searchId, {
+        method: "PUT",
         headers: { Content_Type: "application/json" },
         body: JSON.stringify({
-          userid: profile.userid,
           username: profile.username,
           headline: profile.headline,
           website: profile.website,
@@ -37,12 +82,11 @@ export default function THProfile({ comp }: { comp: string }) {
           linkedin: profile.linkedin,
           youtube: profile.youtube,
           biography: profile.biography,
-          image: "",
+          image: profile.image
         }),
       });
       if (response.status === 200) {
         setProfile({
-          userid: "",
           username: "",
           headline: "",
           website: "",
@@ -50,6 +94,7 @@ export default function THProfile({ comp }: { comp: string }) {
           linkedin: "",
           youtube: "",
           biography: "",
+          image:""
         });
         response.json().then((data) => {
           console.log(data);

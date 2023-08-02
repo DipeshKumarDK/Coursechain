@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const profileSchema = new mongoose.Schema(
     {
-        userid: {
+        email: {
             type: String,
             required: true,
         },

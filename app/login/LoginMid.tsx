@@ -3,8 +3,16 @@
 import bg from "../../assets/bg1.png";
 import Link from "next/link";
 import {useState} from "react";
+import type { RootState } from '../GlobalRedux/store';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeUser } from '../GlobalRedux/Features/user/userSlice';
+import { useRouter } from 'next/navigation'
 
 export default function LoginMid() {
+
+  // const count = useSelector((state: RootState) => state.counter.value);
+  const dispatch = useDispatch();
+  const router = useRouter()
 
   const [user, setUser] = useState({
     email: "",
@@ -37,6 +45,8 @@ export default function LoginMid() {
         });
         response.json().then(data => {
           console.log(data);
+          dispatch(changeUser(data))
+          router.push('/home')
         })
       } else {
         console.log("error");

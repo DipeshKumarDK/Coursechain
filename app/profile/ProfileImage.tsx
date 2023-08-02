@@ -1,21 +1,65 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import pic from "../../assets/hacker.webp";
+import type { RootState } from '../GlobalRedux/store';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function ProfileImage({ comp }: { comp: string }) {
   const [profile, setProfile] = useState({
-    image: "Image Hu Bhai",
-    userid: "idhubhai",
-    username: "dd",
-    headline: "dd",
-    website: "dd",
-    twitter: "dd",
-    linkedin: "dd",
-    youtube: "dd",
-    biography: "dd",
+    username: "none",
+    headline: "none",
+    website: "none",
+    twitter: "none",
+    linkedin: "none",
+    youtube: "none",
+    biography: "none", 
+    image: "none"
   });
+
+  const user = useSelector((state: RootState) => state.user.value);
+  console.log(user?.payload?.email)
+
+  const [searchId, setSearchId] = useState("")
+
+  const handleGet = async () => {
+    try {
+      const response = await fetch("/api/profile/get", {
+        method: "POST",
+        headers: { Content_Type: "application/json" },
+        body : JSON.stringify({
+          email: user?.payload?.email
+        })
+      });
+      if (response.status === 200) {
+        response.json().then((data) => {
+          console.log(data);
+          setSearchId(data._id)
+          setProfile({
+            username: data?.username,
+            headline: data?.headline,
+            website: data?.website,
+            twitter: data?.twitter,
+            linkedin: data?.linkedin,
+            youtube: data?.youtube,
+            biography: data?.biography,
+            image:data?.image
+          });
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+
+  useEffect(() => {
+    handleGet()
+  }, [user])
+  
 
   function handleChange(e: any) {
     const name = e.target.name;
@@ -28,12 +72,10 @@ export default function ProfileImage({ comp }: { comp: string }) {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/profile/idhubhai", {
+      const response = await fetch("/api/profile/"+searchId, {
         method: "PUT",
         headers: { Content_Type: "application/json" },
         body: JSON.stringify({
-          image: profile.image,
-          userid: profile.userid,
           username: profile.username,
           headline: profile.headline,
           website: profile.website,
@@ -41,12 +83,11 @@ export default function ProfileImage({ comp }: { comp: string }) {
           linkedin: profile.linkedin,
           youtube: profile.youtube,
           biography: profile.biography,
+          image: profile.image
         }),
       });
       if (response.status === 200) {
         setProfile({
-          image: "",
-          userid: "",
           username: "",
           headline: "",
           website: "",
@@ -54,6 +95,7 @@ export default function ProfileImage({ comp }: { comp: string }) {
           linkedin: "",
           youtube: "",
           biography: "",
+          image:""
         });
         response.json().then((data) => {
           console.log(data);
@@ -65,6 +107,7 @@ export default function ProfileImage({ comp }: { comp: string }) {
       console.log(e);
     }
   };
+
 
   return (
     <div

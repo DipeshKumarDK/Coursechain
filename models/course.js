@@ -27,7 +27,7 @@ const courseSchema = new mongoose.Schema(
             required: true,
         },
         section_desc: {
-            type: String,
+            type: Array,
             required: true,
         },
         title: {
