@@ -23,7 +23,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js","**/*jsx", ".next/types/**/*.ts", "models/user.js", "utils/dbConn.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js","**/*jsx", ".next/types/**/*.ts", "models/user.js", "utils/dbConn.js", "app/api/course/[id]"],
   "exclude": ["node_modules"]
 }
 

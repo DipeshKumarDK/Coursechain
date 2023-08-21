@@ -2,15 +2,21 @@
 
 import React, { use, useRef, useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
+import type { RootState } from '../GlobalRedux/store';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeUser } from '../GlobalRedux/Features/user/userSlice';
+import { useRouter } from "next/navigation";
 
 export default function Landing({ comp }: { comp: string }) {
   const [language, setLanguage] = useState(0);
   const [level, setLevel] = useState(0);
   const [category, setCategory] = useState(0);
 
-  const [mainLanguage, setMainLanguage] = useState("Lan");
-  const [mainLevel, setMainLevel] = useState("Lev");
-  const [mainCategory, setMainCategory] = useState("Cat");
+  const [mainLanguage, setMainLanguage] = useState("English");
+  const [mainLevel, setMainLevel] = useState("Basic");
+  const [mainCategory, setMainCategory] = useState("Development");
+
+  const router = useRouter();
 
   const changeLanguage = () => {
     if (language === 0) {
@@ -36,6 +42,13 @@ export default function Landing({ comp }: { comp: string }) {
     }
   };
 
+  const user = useSelector((state: RootState) => state.user.value);
+  console.log(user?.payload?.email)
+  console.log(user?.payload?._id)
+
+  const pro = useSelector((state: RootState) => state.profile.value);
+  console.log(pro?.payload?.username)
+
   const [profile, setProfile] = useState({
     title: "",
     subtitle: "",
@@ -45,13 +58,15 @@ export default function Landing({ comp }: { comp: string }) {
     // category: "",
     image: "image.com",
     promotional_video: "video.com",
-    ownerid: "none",
-    username: "none",
+    ownerid: user?.payload?._id,
+    username: pro?.payload?.username,
     learning: [],
     requirements: [],
     section_title: [],
     section_video: [],
     price: "none",
+    email: user?.payload?.email,
+    students: 0
   });
 
   function handleChange(e: any) {
@@ -84,6 +99,8 @@ export default function Landing({ comp }: { comp: string }) {
           section_title: profile.section_title,
           section_video: profile.section_video,
           price: profile.price,
+          email: profile.email,
+          students: profile.students
         }),
       });
       if (response.status === 200) {
@@ -96,16 +113,19 @@ export default function Landing({ comp }: { comp: string }) {
           // category: "",
           image: "",
           promotional_video: "",
-          ownerid: "",
-          username: "",
+          ownerid: user?.payload?._id,
+          username: pro?.payload?.username,
           learning: [],
           requirements: [],
           section_title: [],
           section_video: [],
           price: "7",
+          email: user?.payload?.email,
+          students: 0
         });
         response.json().then((data) => {
           console.log(data);
+          router.push("/home")
         });
       } else {
         console.log("error");
@@ -143,7 +163,7 @@ export default function Landing({ comp }: { comp: string }) {
             <input
               type="text"
               className="placeholder:text-slate-400 w-full p-2 bg-[#04151b] border-[1px] border-slate-300 mt-2"
-              placeholder="Section Video or article*"
+              placeholder="Enter a subtitle for the course*"
               value={profile.subtitle}
               onChange={handleChange}
               name="subtitle"
@@ -169,6 +189,8 @@ export default function Landing({ comp }: { comp: string }) {
                     type="text"
                     className="placeholder:text-slate-400 p-2 bg-[#04151b] flex-grow focus:outline-0"
                     placeholder="Select Language"
+                    value={mainLanguage}
+                    onChange={()=>{}}
                   />
                 </div>
                 <div className="flex flex-col justify-center">
@@ -206,6 +228,8 @@ export default function Landing({ comp }: { comp: string }) {
                     type="text"
                     className="placeholder:text-slate-400 p-2 bg-[#04151b] flex-grow focus:outline-0"
                     placeholder="Select Level"
+                    value={mainLevel}
+                    onChange={()=>{}}
                   />
                 </div>
                 <div className="flex flex-col justify-center">
@@ -249,6 +273,8 @@ export default function Landing({ comp }: { comp: string }) {
                     type="text"
                     className="placeholder:text-slate-400 p-2 bg-[#04151b] flex-grow focus:outline-0"
                     placeholder="Select Level"
+                    value={mainCategory}
+                    onChange={()=>{}}
                   />
                 </div>
                 <div className="flex flex-col justify-center">

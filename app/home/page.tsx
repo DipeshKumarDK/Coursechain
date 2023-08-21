@@ -13,15 +13,69 @@ import New from "./New";
 import Contact from "./Contact";
 import Footer from "@/components/Footer";
 import TrendingQuote from "./TrendingQuote";
-import { useEffect } from "react";
+import { useEffect , useState } from "react";
 import type { RootState } from '../GlobalRedux/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeUser } from '../GlobalRedux/Features/user/userSlice';
+import { changeProfile } from '../GlobalRedux/Features/profile/profileSlice';
 
 export default function HomePage() {
 
   const user = useSelector((state: RootState) => state.user.value);
   console.log(user)
+
+  const dispatch = useDispatch()
+
+  const [allCourses, setAllCourses] = useState([])
+
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch("/api/course/get", {
+        method: "POST",
+        headers: { Content_Type: "application/json" },
+        body: JSON.stringify({
+          body: 'body'
+        })
+      });
+      if (response.status === 200) {
+        response.json().then((data) => {
+          console.log(data);
+          setAllCourses(data)
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleGet = async () => {
+    try {
+      const response = await fetch("/api/profile/get", {
+        method: "POST",
+        headers: { Content_Type: "application/json" },
+        body : JSON.stringify({
+          email: user?.payload?.email
+        })
+      });
+      if (response.status === 200) {
+        response.json().then((data) => {
+          console.log(data);
+          dispatch(changeProfile(data))
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+
+  useEffect(() => {
+    handleSubmit();
+    handleGet()
+  }, [user])
 
   return (
     <main>
@@ -29,13 +83,13 @@ export default function HomePage() {
       <HomeMid />
       <Start />
       <Quote />
-      <Recommended />
-      <Viewing />
+      <Recommended courses={allCourses} />
+      <Viewing courses={allCourses} />
       <CategoryQuote />
       <Explore />
       <TrendingQuote />
-      <Top />
-      <New />
+      <Top courses={allCourses}/>
+      <New courses={allCourses}/>
       <Contact />
       <Footer />
     </main>

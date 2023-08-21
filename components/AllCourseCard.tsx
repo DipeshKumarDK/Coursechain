@@ -1,10 +1,27 @@
+"use client"
+
 import Image from "next/image";
 import pic from "../assets/purple.jpg";
 import Link from "next/link";
+import type { RootState } from '../app/GlobalRedux/store';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeCreateCourse } from '../app/GlobalRedux/Features/createCourse/createCourseSlice';
+import { useRouter } from "next/navigation";
 
-export default function AllCourseCard() {
+export default function AllCourseCard({course}:{course: Object}) {
+
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  console.log(course)
+  
+  const handleSumbit = () => {
+    dispatch(changeCreateCourse(course));
+    router.push("/createCourse")
+  }
+
   return (
-    <Link href={'/course'} className="border-[1px] bg-[#04151b] border-slate-200 p-3 mt-2 mb-2 flex sm:flex-row flex-col">
+    <div onClick={handleSumbit} className="border-[1px] bg-[#04151b] border-slate-200 cursor-pointer p-3 mt-2 mb-2 flex sm:flex-row flex-col">
       {/* <Link href={"/course"}> */}
         <Image
           src={pic}
@@ -44,6 +61,6 @@ export default function AllCourseCard() {
           <h3 className="font-semibold sm:text-lg text-right">$ 520</h3>
         </div>
       {/* </Link> */}
-    </Link>
+    </div>
   );
 }

@@ -1,14 +1,22 @@
 "use client";
 
 import AllCourseCard from "@/components/AllCourseCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import Journey from "./Journey";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import type { RootState } from "../GlobalRedux/store";
+import { useSelector, useDispatch } from "react-redux"; 
 
 export default function Courses({ comp }: { comp: string }) {
   const [filters, setFilters] = useState(0);
+  const [allCourses, setAllCourses] = useState([])
+
+  const user = useSelector((state: RootState) => state.user.value);
+
+  console.log(user)
 
   const changeFilters = () => {
     if (filters === 0) {
@@ -17,6 +25,35 @@ export default function Courses({ comp }: { comp: string }) {
       setFilters(0);
     }
   };
+
+  const router = useRouter();
+
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch("/api/course/myCourse/"+user?.payload?._id, {
+        method: "POST",
+        headers: { Content_Type: "application/json" },
+        body: JSON.stringify({
+          body: 'body'
+        })
+      });
+      if (response.status === 200) {
+        response.json().then((data) => {
+          console.log(data);
+          setAllCourses(data)
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+     handleSubmit();
+  }, [])
+  
 
   return (
     <div className={`md:pl-10 md:pr-10 sm:pl-4 sm:pr-4 pl-2 pr-2 md:pt-20 md:pb-20 sm:pt-14 sm:pb-14 pt-8 pb-8 ${comp==='courses'?'':'hidden'}`}>
@@ -66,8 +103,9 @@ export default function Courses({ comp }: { comp: string }) {
         </div>
       </div>
       <section className="md:mt-10 sm:mt-6 mt-4">
-        <AllCourseCard/>
-        <AllCourseCard/>
+        {allCourses.map((course)=>(
+           <AllCourseCard key={course} course={course}/>
+        ))}
       </section>
       <section className="pt-2 pb-2">
         <Journey/>

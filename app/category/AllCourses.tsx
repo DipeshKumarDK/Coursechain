@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import AllCourseCard from "@/components/AllCourseCard";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import type { RootState } from "../GlobalRedux/store";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function AllCourses() {
   const [visible, setVisible] = useState(0);
@@ -15,6 +17,43 @@ export default function AllCourses() {
         setFilters(0);
     }
   }
+
+  const currCategory = useSelector(
+    (state: RootState) => state.currCategory.value
+  );
+
+  console.log(currCategory.payload);
+
+  const [allCourses, setAllCourses] = useState([]);
+
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch(
+        "/api/course/get/category/" + currCategory.payload,
+        {
+          method: "POST",
+          headers: { Content_Type: "application/json" },
+          body: JSON.stringify({
+            body: "body",
+          }),
+        }
+      );
+      if (response.status === 200) {
+        response.json().then((data) => {
+          console.log(data);
+          setAllCourses(data);
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    handleSubmit();
+  }, [currCategory.payload]);
 
   return (
     <div className="lg:pl-24 lg:pr-24 md:pl-14 md:pr-14 sm:pl-8 sm:pr-8 pl-3 pr-3 md:pt-12 md:pb-12 pt-6 pb-6 bg-black text-white">
@@ -112,9 +151,9 @@ export default function AllCourses() {
         </div>
       </div>
       <section className={`mt-4`}>
-          <AllCourseCard />
-          <AllCourseCard />
-          <AllCourseCard />
+          {allCourses?.map((course: any) => (
+            <AllCourseCard key={course} course={course} />
+          ))}
         </section>
     </div>
   );

@@ -11,6 +11,10 @@ import { FiSearch } from "react-icons/fi";
 import { RiArrowDropRightLine } from "react-icons/ri";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
+import type { RootState } from '../app/GlobalRedux/store';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeCurrCategory } from '../app/GlobalRedux/Features/currCategory/currCategorySlice';
+import { useRouter } from 'next/navigation'
 
 export default function Navbar() {
   const [visible, setVisible] = useState(1);
@@ -34,6 +38,15 @@ export default function Navbar() {
       setSmallVisible(0);
     }
   };
+
+
+  const dispatch = useDispatch();
+  const router = useRouter()
+
+  const navigate = (cat: string) => {
+    dispatch(changeCurrCategory(cat));
+    router.push("/category")
+  }
 
   return (
     <>
@@ -175,60 +188,60 @@ export default function Navbar() {
           visible === 1 ? "md:flex" : "md:hidden"
         }`}
       >
-        <Link
-          href={"/all"}
-          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8]"
+        <h3
+          onClick={()=>{navigate("Development")}}
+          className="text-sm hover:bg-slate-200 cursor-pointer hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8]"
         >
           Development
-        </Link>
-        <Link
-          href={"/all"}
-          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3"
+        </h3>
+        <h3
+          onClick={()=>{navigate("Business")}}
+          className="text-sm hover:bg-slate-200 cursor-pointer hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3"
         >
           Business
-        </Link>
-        <Link
-          href={"/all"}
-          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8]"
+        </h3>
+        <h3
+          onClick={()=>{navigate("Finance & Accounting")}}
+          className="text-sm hover:bg-slate-200 cursor-pointer hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8]"
         >
           Finance & Accounting
-        </Link>
-        <Link
-          href={"/all"}
-          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3"
+        </h3>
+        <h3
+          onClick={()=>{navigate("IT & Software")}}
+          className="text-sm hover:bg-slate-200 cursor-pointer hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3"
         >
           IT & Software
-        </Link>
-        <Link
-          href={"/all"}
-          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8]"
+        </h3>
+        <h3
+          onClick={()=>{navigate("Design")}}
+          className="text-sm hover:bg-slate-200 cursor-pointer hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8]"
         >
           Design
-        </Link>
-        <Link
-          href={"/all"}
-          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3"
+        </h3>
+        <h3
+          onClick={()=>{navigate("Marketing")}}
+          className="text-sm hover:bg-slate-200 cursor-pointer hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3"
         >
           Marketing
-        </Link>
-        <Link
-          href={"/all"}
-          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8] lg:block hidden"
+        </h3>
+        <h3
+          onClick={()=>{navigate("Personal Development")}}
+          className="text-sm hover:bg-slate-200 cursor-pointer hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 text-[#c1e9f8] lg:block hidden"
         >
           Personal Development
-        </Link>
-        <Link
-          href={"/all"}
-          className="text-sm text-[#c1e9f8] hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 xl:block hidden"
+        </h3>
+        <h3
+          onClick={()=>{navigate("Health & Fitness")}}
+          className="text-sm text-[#c1e9f8] hover:bg-slate-200 cursor-pointer hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 xl:block hidden"
         >
           Health & Fitness
-        </Link>
-        <Link
-          href={"/all"}
-          className="text-sm hover:bg-slate-200 hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 xl:block hidden"
+        </h3>
+        <h3
+          onClick={()=>{navigate("Music")}}
+          className="text-sm hover:bg-slate-200 cursor-pointer hover:text-slate-800 rounded-md pt-2 pb-2 pl-3 pr-3 xl:block hidden"
         >
           Music
-        </Link>
+        </h3>
       </section>
       <section
         className="flex md:hidden justify-between pr-3 border-b-[1px] border-t-[1px] border-slate-200 bg-[#09384b] text-white"
@@ -255,76 +268,76 @@ export default function Navbar() {
             <h2 className="font-semibold text-slate-600 mb-1 mt-5">
               Categories
             </h2>
-            <Link
-              href={"/all"}
-              className="flex justify-between pt-2 pb-2 text-sm"
+            <div
+              onClick={()=>{navigate("Development")}}
+              className="flex cursor-pointer justify-between pt-2 pb-2 text-sm"
             >
               <h3 className="text-slate-800">Development</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </Link>
-            <Link
-              href={"/all"}
-              className="flex justify-between pt-2 pb-2 text-sm"
+            </div>
+            <div
+              onClick={()=>{navigate("Business")}}
+              className="flex cursor-pointer justify-between pt-2 pb-2 text-sm"
             >
               <h3 className="text-slate-800">Business</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </Link>
-            <Link
-              href={"/all"}
-              className="flex justify-between pt-2 pb-2 text-sm"
+            </div>
+            <div
+              onClick={()=>{navigate("Finance & Accounting")}}
+              className="flex cursor-pointer justify-between pt-2 pb-2 text-sm"
             >
               <h3 className="text-slate-800">Finance & Accounting</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </Link>
-            <Link
-              href={"/all"}
-              className="flex justify-between pt-2 pb-2 text-sm"
+            </div>
+            <div
+              onClick={()=>{navigate("IT & Software")}}
+              className="flex cursor-pointer justify-between pt-2 pb-2 text-sm"
             >
               <h3 className="text-slate-800">IT & Software</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </Link>
-            <Link
-              href={"/all"}
-              className="flex justify-between pt-2 pb-2 text-sm"
+            </div>
+            <div
+              onClick={()=>{navigate("Personal Development")}}
+              className="flex cursor-pointer justify-between pt-2 pb-2 text-sm"
             >
               <h3 className="text-slate-800">Personal Development</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </Link>
-            <Link
-              href={"/all"}
-              className="flex justify-between pt-2 pb-2 text-sm"
+            </div>
+            <div
+              onClick={()=>{navigate("Math & Logic")}}
+              className="flex cursor-pointer justify-between pt-2 pb-2 text-sm"
             >
               <h3 className="text-slate-800">Math & Logic</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </Link>
-            <Link
-              href={"/all"}
-              className="flex justify-between pt-2 pb-2 text-sm"
+            </div>
+            <div
+              onClick={()=>{navigate("Design")}}
+              className="flex cursor-pointer justify-between pt-2 pb-2 text-sm"
             >
               <h3 className="text-slate-800">Design</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </Link>
-            <Link
-              href={"/all"}
-              className="flex justify-between pt-2 pb-2 text-sm"
+            </div>
+            <div
+              onClick={()=>{navigate("Health & Fitness")}}
+              className="flex cursor-pointer justify-between pt-2 pb-2 text-sm"
             >
               <h3 className="text-slate-800">Health & Fitness</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </Link>
-            <Link
-              href={"/all"}
-              className="flex justify-between pt-2 pb-2 text-sm"
+            </div>
+            <div
+              onClick={()=>{navigate("Marketing")}}
+              className="flex cursor-pointer justify-between pt-2 pb-2 text-sm"
             >
               <h3 className="text-slate-800">Marketing</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </Link>
-            <Link
-              href={"/all"}
-              className="flex justify-between pt-2 pb-2 text-sm"
+            </div>
+            <div
+              onClick={()=>{navigate("Music")}}
+              className="flex cursor-pointer justify-between pt-2 pb-2 text-sm"
             >
               <h3 className="text-slate-800">Music</h3>
               <RiArrowDropRightLine className="h-6 w-6 text-slate-800" />
-            </Link>
+            </div>
           </div>
         </section>
         <Image src={logo} alt="Logo" className="h-14 w-14" />

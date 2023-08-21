@@ -15,7 +15,7 @@ export default function ProfileImage({ comp }: { comp: string }) {
     linkedin: "none",
     youtube: "none",
     biography: "none", 
-    image: "none"
+    image: "https://cdn.pixabay.com/photo/2018/08/26/01/11/toy-3631315_640.jpg"
   });
 
   const user = useSelector((state: RootState) => state.user.value);

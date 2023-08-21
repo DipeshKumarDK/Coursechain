@@ -10,6 +10,10 @@ const courseSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        students:{
+            type: Number,
+            required:true
+        },
         learning: {
             type: Array,
             required: true,
@@ -63,6 +67,10 @@ const courseSchema = new mongoose.Schema(
             required: true,
         },
         price: {
+            type: String,
+            required: true,
+        },
+        email: {
             type: String,
             required: true,
         }

@@ -36,6 +36,19 @@ const profileSchema = new mongoose.Schema(
         },
         image: {
             type: String,
+            required:true
+        },
+        coursesTaken: {
+            type: Array,
+            required:true
+        },
+        wishlist: {
+            type: Array,
+            required:true
+        },
+        coursesMade: {
+            type: Array,
+            required:true
         }
     }
 )

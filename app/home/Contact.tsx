@@ -1,12 +1,13 @@
 "use client"
 
-import React , {useEffect} from 'react'
+import React , {useEffect , useRef} from 'react'
 import { AiFillMail } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { motion , useAnimation } from "framer-motion"
 import {useInView} from "react-intersection-observer";
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
 
@@ -29,6 +30,19 @@ export default function Contact() {
       });
     }
   }, [inView]);
+
+  const form = useRef() as React.MutableRefObject<HTMLFormElement>;
+
+  const sendEmail = (e:any) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_zc77mqb', 'template_jz3vd99', form.current, 'LUnYIlet7n_mbuXeU')
+      .then((result:any) => {
+          console.log(result.text);
+      }, (error:any) => {
+          console.log(error.text);
+      });
+  };
 
   return (
     <div ref={ref} className="bg-[#020b0e] text-white pt-10 pb-10 2xl:pl-64 2xl:pr-64 xl:pl-52 xl:pr-52 lg:pl-32 lg:pr-32 sm:pl-8 sm:pr-8 pl-4 pr-4 border-b-[1px] border-slate-200">
@@ -71,24 +85,27 @@ export default function Contact() {
             </h3>
           </div>
         </section>
-        <section className="md:w-1/2 md:mt-0 mt-6 w-full md:pl-2">
+        <form ref={form} onSubmit={sendEmail} className="md:w-1/2 md:mt-0 mt-6 w-full md:pl-2">
           <input
             className="bg-[#020b0e] border-[1px] border-slate-300 text-slate-200 placeholder:text-slate-400 p-2 rounded w-full h-[45px]"
             placeholder="Your name"
             type="text"
+            name="from_name"
           />
           <input
             className="bg-[#020b0e] border-[1px] border-slate-300 text-slate-200 placeholder:text-slate-400 p-2 rounded w-full h-[45px] mt-3"
             placeholder="Enter your email"
             type="email"
+            name="from_email"
           />
           <textarea
             rows={7}
             className="bg-[#020b0e] border-[1px] border-slate-300 text-slate-200 placeholder:text-slate-400 p-2 rounded w-full mt-3"
             placeholder="Elaborate your concern"
+            name="message"
           />
-          <h2 className="w-24 pt-2 pb-2 bg-green-700 text-white text-center rounded-md mt-2 border-[1px] border-slate-300 cursor-pointer">Submit</h2>
-        </section>
+          <button type='submit' className="w-24 pt-2 pb-2 bg-green-700 text-white text-center rounded-md mt-2 border-[1px] border-slate-300 cursor-pointer">Submit</button>
+        </form>
       </div>
     </div>
   );

@@ -6,11 +6,11 @@ import {useState} from "react";
 import type { RootState } from '../GlobalRedux/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeUser } from '../GlobalRedux/Features/user/userSlice';
+import { changeProfile } from '../GlobalRedux/Features/profile/profileSlice';
 import { useRouter } from 'next/navigation'
-
+  
 export default function LoginMid() {
 
-  // const count = useSelector((state: RootState) => state.counter.value);
   const dispatch = useDispatch();
   const router = useRouter()
 
@@ -46,7 +46,30 @@ export default function LoginMid() {
         response.json().then(data => {
           console.log(data);
           dispatch(changeUser(data))
+          handleGet(data?.email)
           router.push('/home')
+        })
+      } else {
+        console.log("error");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleGet = async (mail:String) => {
+    try {
+      const response = await fetch("/api/profile/get", {
+        method: "POST",
+        headers: { Content_Type: "application/json" },
+        body : JSON.stringify({
+          email: mail
+        })
+      });
+      if (response.status === 200) {
+        response.json().then(data => {
+          console.log(data);
+          dispatch(changeProfile(data))
         })
       } else {
         console.log("error");

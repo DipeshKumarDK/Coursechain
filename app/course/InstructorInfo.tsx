@@ -1,11 +1,53 @@
+"use client"
+
+import React, { useState , useEffect } from "react";
 import Image from "next/image";
 import pic from "../../assets/profile.jpg";
 import { AiFillStar } from "react-icons/ai";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { HiUserGroup } from "react-icons/hi";
 import { AiFillPlayCircle } from "react-icons/ai";
+import type { RootState } from "../GlobalRedux/store";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function InstructorInfo() {
+
+  const course = useSelector((state: RootState) => state.course.value);
+  console.log(course?.payload);
+
+  const [ins, setIns] = useState({
+    username: "none",
+    headline: "none",
+    biography: "none", 
+    image: "none"
+  })
+
+  const handleGet = async () => {
+    try {
+      const response = await fetch("/api/profile/get", {
+        method: "POST",
+        headers: { Content_Type: "application/json" },
+        body : JSON.stringify({
+          email: course?.payload?.email
+        })
+      });
+      if (response.status === 200) {
+        response.json().then((data) => {
+          console.log(data);
+          setIns(data)
+        });
+      } else {
+        console.log(response.status);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    handleGet()
+  }, [course?.payload?.ownerid])
+
   return (
     <div className="xl:pl-36 xl:pr-36 lg:pl-24 lg:pr-24 md:pl-12 md:pr-12 sm:pl-8 sm:pr-8 xs:pl-4 xs:pr-4 pl-3 pr-3 pt-12 pb-8 flex bg-[#04151b] text-slate-100">
       <div className="">
@@ -38,25 +80,7 @@ export default function InstructorInfo() {
           </div>
         </section>
         <h4 className="text-[0.9rem] md:text-base sm:text-sm text-sm mt-3">
-          Clarian is the instructor with recognized industry certification and
-          the resume to back it. His students have gone on and continue working
-          and contributing to some of the biggest and most reputable Production
-          companies in the world like Universal, Google, Amazon, Warner, The
-          BBC, Spotify, Landr, Splice etc…
-        </h4>
-        <h4 className="text-[0.9rem] mt-1">
-          Clarian is the instructor with recognized industry certification and
-          the resume to back it. His students have gone on and continue working
-          and contributing to some of the biggest and most reputable Production
-          companies in the world like Universal, Google, Amazon, Warner, The
-          BBC, Spotify, Landr, Splice etc…
-        </h4>
-        <h4 className="text-[0.9rem] mt-1">
-          Clarian is the instructor with recognized industry certification and
-          the resume to back it. His students have gone on and continue working
-          and contributing to some of the biggest and most reputable Production
-          companies in the world like Universal, Google, Amazon, Warner, The
-          BBC, Spotify, Landr, Splice etc…
+          {ins?.biography}
         </h4>
       </div>
     </div>

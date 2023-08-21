@@ -20,6 +20,10 @@ export default function RegisterMid() {
     linkedin: "none",
     youtube: "none",
     biography: "none", 
+    image: "none",
+    coursesTaken: [],
+    wishlist: [],
+    coursesMade: []
   });
 
   function handleChange(e: any) {
@@ -67,7 +71,10 @@ export default function RegisterMid() {
           linkedin: profile.linkedin,
           youtube: profile.youtube,
           biography: profile.biography,
-          image: "",
+          image: profile.image,
+          coursesTaken: profile.coursesTaken,
+          coursesMade: profile.coursesMade,
+          wishlist : profile.wishlist
         }),
       });
       if (resp.status === 200) {
@@ -80,6 +87,10 @@ export default function RegisterMid() {
           linkedin: "",
           youtube: "",
           biography: "",
+          image: "none",
+          coursesTaken: [],
+          wishlist: [],
+          coursesMade: []
         });
         resp.json().then((data) => {
           console.log(data);
