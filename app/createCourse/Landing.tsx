@@ -66,7 +66,13 @@ export default function Landing({ comp }: { comp: string }) {
     section_video: [],
     price: "none",
     email: user?.payload?.email,
-    students: 0
+    students: 0,
+    rating: 0,
+    why_right_course: "none",
+    for_whom: "none",
+    reviews: [],
+    announcements: [],
+    questions: []
   });
 
   function handleChange(e: any) {
@@ -100,8 +106,14 @@ export default function Landing({ comp }: { comp: string }) {
           section_video: profile.section_video,
           price: profile.price,
           email: profile.email,
-          students: profile.students
-        }),
+          students: profile.students,
+          rating: profile.rating,
+          why_right_course: profile.why_right_course,
+          for_whom: profile.for_whom,
+          reviews: profile.reviews,
+          announcements: profile.announcements,
+          questions: profile.questions
+        }), 
       });
       if (response.status === 200) {
         setProfile({
@@ -121,7 +133,13 @@ export default function Landing({ comp }: { comp: string }) {
           section_video: [],
           price: "7",
           email: user?.payload?.email,
-          students: 0
+          students: 0,
+          rating: 0,
+          why_right_course: "",
+          for_whom: "",
+          reviews: [],
+          announcements: [],
+          questions: []
         });
         response.json().then((data) => {
           console.log(data);

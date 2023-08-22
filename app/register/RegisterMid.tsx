@@ -2,13 +2,14 @@
 
 import bg from "../../assets/bg1.png";
 import Link from "next/link";
-import { useState } from "react"; 
+import { useState } from "react";
 
 export default function RegisterMid() {
   const [user, setUser] = useState({
     username: "",
     email: "",
     password: "",
+    cpassword: "",
   });
 
   const [profile, setProfile] = useState({
@@ -19,11 +20,14 @@ export default function RegisterMid() {
     twitter: "none",
     linkedin: "none",
     youtube: "none",
-    biography: "none", 
+    biography: "none",
     image: "none",
     coursesTaken: [],
     wishlist: [],
-    coursesMade: []
+    coursesMade: [],
+    why_perfect_teacher: "none",
+    students: 0,
+    rating: 0,
   });
 
   function handleChange(e: any) {
@@ -35,71 +39,82 @@ export default function RegisterMid() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    let id = "none"
-    try {
-      const response = await fetch("/api/user", {
-        method: "POST",
-        headers: { Content_Type: "application/json" },
-        body: JSON.stringify({
-          username: user.username,
-          email: user.email,
-          password: user.password,
-        }),
-      });
-      if (response.status === 200) {
-        setUser({
-          username: "",
-          email: "",
-          password: "",
+    if (user.password !== user.cpassword) {
+      window.alert("Passwords do not match");
+    } else {
+      let id = "none";
+      try {
+        const response = await fetch("/api/user", {
+          method: "POST",
+          headers: { Content_Type: "application/json" },
+          body: JSON.stringify({
+            username: user.username,
+            email: user.email,
+            password: user.password,
+          }),
         });
-        response.json().then((data) => {
-          id = data?.res[0]?._id.toString();
-          console.log(id);
+        if (response.status === 200) {
+          setUser({
+            username: "",
+            email: "",
+            password: "",
+            cpassword: "",
+          });
+          response.json().then((data) => {
+            id = data?.res[0]?._id.toString();
+            console.log(id);
+          });
+        } else {
+          console.log("error");
+        }
+        const resp = await fetch("/api/profile", {
+          method: "POST",
+          headers: { Content_Type: "application/json" },
+          body: JSON.stringify({
+            email: user.email,
+            username: user.username,
+            headline: profile.headline,
+            website: profile.website,
+            twitter: profile.twitter,
+            linkedin: profile.linkedin,
+            youtube: profile.youtube,
+            biography: profile.biography,
+            image: profile.image,
+            coursesTaken: profile.coursesTaken,
+            coursesMade: profile.coursesMade,
+            wishlist: profile.wishlist,
+            why_perfect_teacher: profile.why_perfect_teacher,
+            students: profile.students,
+            rating: profile.rating,
+          }),
         });
-      } else {
-        console.log("error");
+        if (resp.status === 200) {
+          setProfile({
+            email: "",
+            username: "",
+            headline: "",
+            website: "",
+            twitter: "",
+            linkedin: "",
+            youtube: "",
+            biography: "",
+            image: "none",
+            coursesTaken: [],
+            wishlist: [],
+            coursesMade: [],
+            why_perfect_teacher: "none",
+            students: 0,
+            rating: 0,
+          });
+          resp.json().then((data) => {
+            console.log(data);
+          });
+        } else {
+          console.log("error");
+        }
+      } catch (e) {
+        console.log(e);
       }
-      const resp = await fetch("/api/profile", {
-        method: "POST",
-        headers: { Content_Type: "application/json" },
-        body: JSON.stringify({
-          email: user.email,
-          username: user.username,
-          headline: profile.headline,
-          website: profile.website,
-          twitter: profile.twitter,
-          linkedin: profile.linkedin,
-          youtube: profile.youtube,
-          biography: profile.biography,
-          image: profile.image,
-          coursesTaken: profile.coursesTaken,
-          coursesMade: profile.coursesMade,
-          wishlist : profile.wishlist
-        }),
-      });
-      if (resp.status === 200) {
-        setProfile({
-          email: "",
-          username: "",
-          headline: "",
-          website: "",
-          twitter: "",
-          linkedin: "",
-          youtube: "",
-          biography: "",
-          image: "none",
-          coursesTaken: [],
-          wishlist: [],
-          coursesMade: []
-        });
-        resp.json().then((data) => {
-          console.log(data);
-        });
-      } else {
-        console.log("error");
-      }
-    } catch (e) {
-      console.log(e);
     }
   };
 
@@ -155,6 +170,9 @@ export default function RegisterMid() {
             type="password"
             className="w-full bg-transparent sm:pt-2 sm:pb-2 pt-1 pb-1 placeholder:text-slate-200 placeholder:text-sm focus:outline-0"
             placeholder="Re-enter Password *"
+            value={user.cpassword}
+            onChange={handleChange}
+            name="cpassword"
           />
         </div>
         <button

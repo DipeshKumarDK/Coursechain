@@ -73,7 +73,31 @@ const courseSchema = new mongoose.Schema(
         email: {
             type: String,
             required: true,
-        }
+        },
+        rating: {
+            type: Number,
+            required: true,
+        },
+        why_right_course:{
+            type:String,
+            required: true
+        },
+        for_whom: {
+            type: String,
+            required: true,
+        },
+        reviews: {
+            type: Array,
+            required: true,
+        },
+        announcements: {
+            type: Array,
+            required: true,
+        },
+        questions: {
+            type: Array,
+            required: true,
+        },
     }
 )
 

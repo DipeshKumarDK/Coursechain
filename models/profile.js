@@ -49,6 +49,18 @@ const profileSchema = new mongoose.Schema(
         coursesMade: {
             type: Array,
             required:true
+        },
+        why_perfect_teacher:{
+            type: String,
+            required:true
+        },
+        students:{
+            type: Number,
+            required:true
+        },
+        rating:{
+            type: Number,
+            required:true
         }
     }
 )
